@@ -1,7 +1,16 @@
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/ux-crimes">UX Crimes</a>
-  <a routerLink="/angular-crimes">Angular Crimes</a>
-  <a routerLink="/javascript-crimes">JavaScript Crimes</a>
-  <a routerLink="/css-crimes">CSS Crimes</a>
+<nav
+  class="flex flex-col gap-4 w-64 p-6 bg-slate-900 text-slate-100 min-h-screen border-r border-slate-800"
+>
+  <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
+    Navigation
+  </div>
+  @for (item of navItems; track item.path) {
+    <a
+      [routerLink]="item.path"
+      routerLinkActive="text-yellow-400 font-medium"
+      class="transition-colors duration-200 hover:text-yellow-400"
+    >
+      {{ item.label }}
+    </a>
+  }
 </nav>
