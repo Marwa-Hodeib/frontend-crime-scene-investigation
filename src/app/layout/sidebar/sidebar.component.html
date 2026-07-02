@@ -1,9 +1,6 @@
 <nav
   class="flex flex-col gap-4 w-64 p-6 bg-slate-900 text-slate-100 min-h-screen border-r border-slate-800"
 >
-  <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-    Navigation
-  </div>
   @for (item of navItems; track item.path) {
     <a
       [routerLink]="item.path"

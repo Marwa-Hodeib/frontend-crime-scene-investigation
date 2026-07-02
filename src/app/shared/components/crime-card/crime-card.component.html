@@ -1,0 +1,21 @@
+<div class="rounded-xl border p-6 shadow-sm bg-white">
+  <h2 class="text-xl font-bold">
+    {{ crime.title }}
+  </h2>
+
+  <p class="mt-2 text-sm font-semibold text-red-600">
+    Severity: {{ crime.severity }}
+  </p>
+
+  <p class="mt-4 text-slate-700">
+    {{ crime.description }}
+  </p>
+
+  <div class="mt-4 border-t pt-4">
+    <h3 class="font-semibold">Evidence</h3>
+
+    <p class="text-slate-600">
+      {{ crime.evidence }}
+    </p>
+  </div>
+</div>
