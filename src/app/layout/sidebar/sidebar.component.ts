@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,6 +9,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
+  isOpen = signal(false);
+
+  toggle() {
+    this.isOpen.set(!this.isOpen());
+  }
+
+  close() {
+    this.isOpen.set(false);
+  }
+
   navItems = [
     { label: 'Home', path: '/' },
     { label: 'UX Crimes', path: '/ux-crimes' },
