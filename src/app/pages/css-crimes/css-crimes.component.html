@@ -1,2 +1,1307 @@
-<h1>CSS Crime Scene</h1>
-<p>Layout violations are being documented.</p>
+<div class="grid md:grid-cols-[180px_1fr]">
+  <!-- Sidebar -->
+  <aside
+    class="border-b border-slate-200 bg-slate-50 p-4 md:min-h-screen md:border-b-0 md:border-r"
+  >
+    <div class="sticky top-6">
+      <p class="text-xs font-black uppercase tracking-widest text-purple-600">
+        CSS Crime Lab
+      </p>
+
+      <h2 class="mt-2 text-lg font-black text-slate-900">Investigation</h2>
+
+      <div class="mt-4">
+        <p
+          class="mb-2 text-xs font-black uppercase tracking-widest text-slate-400"
+        >
+          Cases
+        </p>
+
+        <div class="space-y-2">
+          <!-- Case 001 -->
+          <button
+            type="button"
+            (click)="openCase(1)"
+            class="w-full rounded-xl border px-3 py-3 text-left transition"
+            [class.border-purple-300]="activeCase() === 1"
+            [class.bg-purple-50]="activeCase() === 1"
+            [class.text-purple-700]="activeCase() === 1"
+            [class.border-slate-200]="activeCase() !== 1"
+            [class.bg-white]="activeCase() !== 1"
+            [class.text-slate-500]="activeCase() !== 1"
+          >
+            <p class="text-xs font-black">Case #001</p>
+
+            <p class="mt-1 text-xs">Magic Number Abuse</p>
+          </button>
+
+          <!-- Case 002 -->
+          <button
+            type="button"
+            (click)="openCase(2)"
+            class="w-full rounded-xl border px-3 py-3 text-left transition"
+            [class.border-purple-300]="activeCase() === 2"
+            [class.bg-purple-50]="activeCase() === 2"
+            [class.text-purple-700]="activeCase() === 2"
+            [class.border-slate-200]="activeCase() !== 2"
+            [class.bg-white]="activeCase() !== 2"
+            [class.text-slate-500]="activeCase() !== 2"
+          >
+            <p class="text-xs font-black">Case #002</p>
+
+            <p class="mt-1 text-xs">Z-Index Inflation</p>
+          </button>
+
+          <!-- Case 003 -->
+          <button
+            type="button"
+            (click)="openCase(3)"
+            class="w-full rounded-xl border px-3 py-3 text-left transition"
+            [class.border-purple-300]="activeCase() === 3"
+            [class.bg-purple-50]="activeCase() === 3"
+            [class.text-purple-700]="activeCase() === 3"
+            [class.border-slate-200]="activeCase() !== 3"
+            [class.bg-white]="activeCase() !== 3"
+            [class.text-slate-500]="activeCase() !== 3"
+          >
+            <p class="text-xs font-black">Case #003</p>
+
+            <p class="mt-1 text-xs">!important Abuse</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="min-w-0 p-6">
+    <!-- Page Header -->
+    <div class="mx-auto max-w-4xl">
+      <div class="flex flex-wrap items-center gap-3">
+        <span
+          class="rounded-full bg-red-100 px-3 py-1 text-xs font-black uppercase tracking-wider text-red-700"
+        >
+          🚨 CSS Crime Scene
+        </span>
+
+        <span
+          class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700"
+        >
+          Under Investigation
+        </span>
+      </div>
+
+      <h1 class="mt-4 text-4xl font-black tracking-tight text-slate-900">
+        Something is wrong with this CSS.
+      </h1>
+
+      <p class="mt-2 text-lg text-slate-500">
+        The interface looks almost normal. Almost.
+      </p>
+
+      <div class="mt-6 border-l-4 border-red-500 pl-4">
+        <p class="text-lg leading-relaxed text-slate-600">
+          A suspicious CSS declaration has been discovered at the scene.
+        </p>
+
+        <p class="mt-2 text-sm text-slate-400">
+          Your job is to identify the culprit.
+        </p>
+      </div>
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- CASE #001 — MAGIC NUMBER ABUSE -->
+    <!-- ====================================================== -->
+
+    @if (activeCase() === 1) {
+      <div class="mx-auto mt-10 max-w-4xl">
+        <!-- Case Header -->
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <p
+              class="text-xs font-black uppercase tracking-widest text-slate-400"
+            >
+              Evidence #001
+            </p>
+
+            <p class="mt-1 text-sm font-bold text-slate-700">
+              Dashboard specimen
+            </p>
+          </div>
+
+          @if (crimeDetected()) {
+            <span
+              class="rounded-full bg-red-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-red-700"
+            >
+              Crime Detected
+            </span>
+          }
+
+          @if (!crimeDetected()) {
+            <span
+              class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-emerald-700"
+            >
+              Scene Repaired
+            </span>
+          }
+        </div>
+
+        <!-- Specimen -->
+        <div
+          class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg transition-all duration-500"
+          [class.ml-36]="crimeDetected()"
+        >
+          <!-- Dashboard Header -->
+          <div
+            class="flex items-center justify-between border-b border-slate-200 px-6 py-5"
+          >
+            <div>
+              <p class="text-sm font-bold text-slate-400">Welcome back</p>
+
+              <h2 class="mt-1 text-xl font-black text-slate-900">
+                Alex Morgan
+              </h2>
+            </div>
+
+            <div
+              class="flex h-11 w-11 items-center justify-center rounded-full bg-purple-100 text-sm font-black text-purple-700"
+            >
+              AM
+            </div>
+          </div>
+
+          <!-- Dashboard Content -->
+          <div class="p-6">
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div class="rounded-xl bg-slate-50 p-4">
+                <p
+                  class="text-xs font-bold uppercase tracking-wide text-slate-400"
+                >
+                  Projects
+                </p>
+
+                <p class="mt-2 text-2xl font-black text-slate-900">24</p>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 p-4">
+                <p
+                  class="text-xs font-bold uppercase tracking-wide text-slate-400"
+                >
+                  Completed
+                </p>
+
+                <p class="mt-2 text-2xl font-black text-slate-900">18</p>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 p-4">
+                <p
+                  class="text-xs font-bold uppercase tracking-wide text-slate-400"
+                >
+                  Progress
+                </p>
+
+                <p class="mt-2 text-2xl font-black text-slate-900">76%</p>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-xl border border-slate-200 p-5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-bold text-slate-400">
+                    Current project
+                  </p>
+
+                  <p class="mt-1 font-black text-slate-900">
+                    Frontend Redesign
+                  </p>
+                </div>
+
+                <span
+                  class="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700"
+                >
+                  In Progress
+                </span>
+              </div>
+
+              <div class="mt-5 h-2 overflow-hidden rounded-full bg-slate-100">
+                <div class="h-full w-[76%] rounded-full bg-purple-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inspect -->
+        @if (crimeDetected()) {
+          <div class="mt-8 flex justify-center">
+            <button
+              type="button"
+              (click)="inspectCrime()"
+              class="rounded-xl bg-slate-900 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
+            >
+              🔎 Inspect the Evidence
+            </button>
+          </div>
+        }
+
+        <!-- Evidence -->
+        @if (evidenceVisible()) {
+          <div
+            class="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-xl"
+          >
+            <div
+              class="flex items-center justify-between border-b border-slate-800 px-5 py-3"
+            >
+              <span
+                class="text-xs font-black uppercase tracking-widest text-slate-500"
+              >
+                suspicious.css
+              </span>
+
+              <span class="text-xs font-bold text-red-400">
+                ⚠ Suspicious declaration
+              </span>
+            </div>
+
+            <div class="p-5 font-mono text-sm leading-8">
+              <div class="text-slate-500">.specimen &#123;</div>
+
+              <div class="pl-6 text-slate-300">
+                <span class="text-purple-400">width</span>:
+                <span class="text-yellow-300">100%</span>;
+              </div>
+
+              <div class="pl-6 text-slate-300">
+                <span class="text-purple-400">padding</span>:
+                <span class="text-yellow-300">24px</span>;
+              </div>
+
+              <div class="mt-1 rounded bg-red-500/10 pl-6 text-red-400">
+                <span class="text-purple-400">margin-left</span>:
+                <span class="text-yellow-300">137px</span>;
+
+                <span class="ml-2 text-xs text-red-500"> ← SUSPECT </span>
+              </div>
+
+              <div class="text-slate-500">&#125;</div>
+            </div>
+          </div>
+
+          <!-- Verdict -->
+          <div class="mt-6 rounded-2xl border border-red-200 bg-red-50 p-6">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">🚨</div>
+
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-red-500"
+                >
+                  Crime Identified
+                </p>
+
+                <h3 class="mt-1 text-2xl font-black text-red-900">
+                  Magic Number Abuse
+                </h3>
+
+                <p class="mt-3 leading-relaxed text-red-800">
+                  Someone needed this element to move 137 pixels and simply
+                  hard-coded the number into the layout.
+                </p>
+
+                <p class="mt-3 text-sm leading-relaxed text-red-700">
+                  The problem isn't that numbers are forbidden. The problem is
+                  using arbitrary positional values when the layout system
+                  should be doing the work.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remove Crime -->
+          <div class="mt-6 flex justify-center">
+            <button
+              type="button"
+              (click)="removeCrime()"
+              class="rounded-xl bg-emerald-600 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-emerald-700"
+            >
+              🧹 Remove the Crime
+            </button>
+          </div>
+        }
+
+        <!-- ================================================== -->
+        <!-- CASE #001 REPAIR REPORT -->
+        <!-- ================================================== -->
+
+        @if (!crimeDetected()) {
+          <div
+            class="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+          >
+            <!-- Report Header -->
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-5">
+              <p
+                class="text-xs font-black uppercase tracking-widest text-purple-600"
+              >
+                🧪 Repair Report
+              </p>
+
+              <h3 class="mt-1 text-xl font-black text-slate-900">
+                Case #001 — From arbitrary positioning to natural layout
+              </h3>
+            </div>
+
+            <div class="p-6">
+              <!-- Original / Repaired -->
+              <div class="grid gap-6 lg:grid-cols-2">
+                <!-- Original -->
+                <div>
+                  <p
+                    class="mb-3 text-xs font-black uppercase tracking-widest text-red-500"
+                  >
+                    Original CSS
+                  </p>
+
+                  <div class="overflow-hidden rounded-xl bg-slate-950">
+                    <div class="border-b border-slate-800 px-4 py-3">
+                      <span class="text-xs font-bold text-slate-500">
+                        original.css
+                      </span>
+                    </div>
+
+                    <div class="p-4 font-mono text-sm leading-8">
+                      <div class="text-slate-500">.specimen &#123;</div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">width</span>:
+                        <span class="text-yellow-300">100%</span>;
+                      </div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">padding</span>:
+                        <span class="text-yellow-300">24px</span>;
+                      </div>
+
+                      <div class="rounded bg-red-500/10 pl-6 text-red-400">
+                        <span class="text-purple-400">margin-left</span>:
+                        <span class="text-yellow-300">137px</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Repaired -->
+                <div>
+                  <p
+                    class="mb-3 text-xs font-black uppercase tracking-widest text-emerald-600"
+                  >
+                    Repaired CSS
+                  </p>
+
+                  <div class="overflow-hidden rounded-xl bg-slate-950">
+                    <div class="border-b border-slate-800 px-4 py-3">
+                      <span class="text-xs font-bold text-slate-500">
+                        repaired.css
+                      </span>
+                    </div>
+
+                    <div class="p-4 font-mono text-sm leading-8">
+                      <div class="text-slate-500">.specimen &#123;</div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">width</span>:
+                        <span class="text-yellow-300">100%</span>;
+                      </div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">padding</span>:
+                        <span class="text-yellow-300">24px</span>;
+                      </div>
+
+                      <div
+                        class="rounded bg-emerald-500/10 pl-6 text-emerald-400"
+                      >
+                        <span class="text-purple-400">margin</span>:
+                        <span class="text-yellow-300">0 auto</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- What Changed -->
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-slate-400"
+                >
+                  What changed?
+                </p>
+
+                <div class="mt-3 font-mono text-sm leading-8">
+                  <div class="rounded bg-red-50 px-4 text-red-700">
+                    - margin-left: 137px;
+                  </div>
+
+                  <div class="mt-2 rounded bg-emerald-50 px-4 text-emerald-700">
+                    + margin: 0 auto;
+                  </div>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- Why Better -->
+              <div>
+                <div class="flex items-start gap-4">
+                  <div class="text-2xl">💡</div>
+
+                  <div>
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-blue-600"
+                    >
+                      Why is this better?
+                    </p>
+
+                    <h4 class="mt-1 text-lg font-black text-slate-900">
+                      Let the layout system do the work.
+                    </h4>
+
+                    <p class="mt-3 leading-relaxed text-slate-600">
+                      The original layout relied on an arbitrary 137px offset.
+                      The repaired version lets the element position itself
+                      naturally within its container.
+                    </p>
+
+                    <p class="mt-3 text-sm leading-relaxed text-slate-500">
+                      This makes the layout easier to maintain and less
+                      dependent on one specific screen size or surrounding
+                      content.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- Case Closed -->
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-widest text-emerald-600"
+                  >
+                    Case Closed
+                  </p>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    The suspicious declaration has been removed.
+                  </p>
+                </div>
+
+                <div class="text-3xl">🧑‍⚖️</div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- ====================================================== -->
+    <!-- CASE #002 — Z-INDEX INFLATION -->
+    <!-- ====================================================== -->
+
+    @if (activeCase() === 2) {
+      <div class="mx-auto mt-10 max-w-4xl">
+        <!-- Case Header -->
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <p
+              class="text-xs font-black uppercase tracking-widest text-slate-400"
+            >
+              Evidence #002
+            </p>
+
+            <p class="mt-1 text-sm font-bold text-slate-700">
+              Stacking context specimen
+            </p>
+          </div>
+
+          @if (crimeDetected()) {
+            <span
+              class="rounded-full bg-red-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-red-700"
+            >
+              Crime Detected
+            </span>
+          }
+
+          @if (!crimeDetected()) {
+            <span
+              class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-emerald-700"
+            >
+              Scene Repaired
+            </span>
+          }
+        </div>
+
+        <!-- Specimen -->
+        <div
+          class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+        >
+          <div class="p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-bold text-slate-400">Project status</p>
+
+                <h2 class="mt-1 text-2xl font-black text-slate-900">
+                  Frontend Redesign
+                </h2>
+              </div>
+
+              <div
+                class="rounded-full bg-emerald-100 px-4 py-2 text-sm font-black text-emerald-700"
+              >
+                Active
+              </div>
+            </div>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-xl bg-slate-50 p-5">
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-slate-400"
+                >
+                  Progress
+                </p>
+
+                <p class="mt-2 text-3xl font-black text-slate-900">76%</p>
+
+                <div class="mt-4 h-2 rounded-full bg-slate-200">
+                  <div class="h-full w-[76%] rounded-full bg-purple-500"></div>
+                </div>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 p-5">
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-slate-400"
+                >
+                  Tasks
+                </p>
+
+                <p class="mt-2 text-3xl font-black text-slate-900">18 / 24</p>
+
+                <p class="mt-2 text-sm text-slate-500">Six tasks remaining.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Background layer -->
+          <div
+            class="absolute right-6 top-24 rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white"
+          >
+            This should be behind the notification.
+          </div>
+
+          <!-- Suspicious notification -->
+          @if (crimeDetected()) {
+            <div
+              class="absolute right-6 top-24 z-[999999] rounded-xl border border-red-200 bg-red-50 px-4 py-3 shadow-lg"
+            >
+              <p
+                class="text-xs font-black uppercase tracking-widest text-red-500"
+              >
+                🚨 Notification
+              </p>
+
+              <p class="mt-1 text-sm font-bold text-red-900">
+                You're doing great!
+              </p>
+            </div>
+          }
+        </div>
+
+        <!-- Inspect -->
+        @if (crimeDetected()) {
+          <div class="mt-8 flex justify-center">
+            <button
+              type="button"
+              (click)="inspectCrime()"
+              class="rounded-xl bg-slate-900 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
+            >
+              🔎 Inspect the Evidence
+            </button>
+          </div>
+        }
+
+        <!-- Evidence -->
+        @if (evidenceVisible()) {
+          <div
+            class="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-xl"
+          >
+            <div
+              class="flex items-center justify-between border-b border-slate-800 px-5 py-3"
+            >
+              <span
+                class="text-xs font-black uppercase tracking-widest text-slate-500"
+              >
+                suspicious.css
+              </span>
+
+              <span class="text-xs font-bold text-red-400">
+                ⚠ Suspicious declaration
+              </span>
+            </div>
+
+            <div class="p-5 font-mono text-sm leading-8">
+              <div class="text-slate-500">.notification &#123;</div>
+
+              <div class="pl-6 text-slate-300">
+                <span class="text-purple-400">position</span>:
+                <span class="text-yellow-300">absolute</span>;
+              </div>
+
+              <div class="mt-1 rounded bg-red-500/10 pl-6 text-red-400">
+                <span class="text-purple-400"> z-index </span>:
+
+                <span class="text-yellow-300"> 999999 </span>;
+
+                <span class="ml-2 text-xs text-red-500"> ← SUSPECT </span>
+              </div>
+
+              <div class="text-slate-500">&#125;</div>
+            </div>
+          </div>
+
+          <!-- Verdict -->
+          <div class="mt-6 rounded-2xl border border-red-200 bg-red-50 p-6">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">📚</div>
+
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-red-500"
+                >
+                  Crime Identified
+                </p>
+
+                <h3 class="mt-1 text-2xl font-black text-red-900">
+                  Z-Index Inflation
+                </h3>
+
+                <p class="mt-3 leading-relaxed text-red-800">
+                  The developer encountered a stacking problem and responded by
+                  adding approximately one million to the z-index.
+                </p>
+
+                <p class="mt-3 text-sm leading-relaxed text-red-700">
+                  A large z-index does not automatically solve stacking-context
+                  problems. Understanding how stacking contexts work is the
+                  actual solution.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remove Crime -->
+          <div class="mt-6 flex justify-center">
+            <button
+              type="button"
+              (click)="removeCrime()"
+              class="rounded-xl bg-emerald-600 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-emerald-700"
+            >
+              🧹 Remove the Crime
+            </button>
+          </div>
+        }
+
+        <!-- ================================================== -->
+        <!-- CASE #002 REPAIR REPORT -->
+        <!-- ================================================== -->
+
+        @if (!crimeDetected()) {
+          <div
+            class="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+          >
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-5">
+              <p
+                class="text-xs font-black uppercase tracking-widest text-purple-600"
+              >
+                🧪 Repair Report
+              </p>
+
+              <h3 class="mt-1 text-xl font-black text-slate-900">
+                Case #002 — From z-index inflation to predictable stacking
+              </h3>
+            </div>
+
+            <div class="p-6">
+              <!-- Original / Repaired -->
+              <div class="grid gap-6 lg:grid-cols-2">
+                <!-- Original -->
+                <div>
+                  <p
+                    class="mb-3 text-xs font-black uppercase tracking-widest text-red-500"
+                  >
+                    Original CSS
+                  </p>
+
+                  <div class="overflow-hidden rounded-xl bg-slate-950">
+                    <div class="border-b border-slate-800 px-4 py-3">
+                      <span class="text-xs font-bold text-slate-500">
+                        original.css
+                      </span>
+                    </div>
+
+                    <div class="p-4 font-mono text-sm leading-8">
+                      <div class="text-slate-500">.notification &#123;</div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">position</span>:
+                        <span class="text-yellow-300">absolute</span>;
+                      </div>
+
+                      <div class="rounded bg-red-500/10 pl-6 text-red-400">
+                        <span class="text-purple-400">z-index</span>:
+                        <span class="text-yellow-300">999999</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Repaired -->
+                <div>
+                  <p
+                    class="mb-3 text-xs font-black uppercase tracking-widest text-emerald-600"
+                  >
+                    Repaired CSS
+                  </p>
+
+                  <div class="overflow-hidden rounded-xl bg-slate-950">
+                    <div class="border-b border-slate-800 px-4 py-3">
+                      <span class="text-xs font-bold text-slate-500">
+                        repaired.css
+                      </span>
+                    </div>
+
+                    <div class="p-4 font-mono text-sm leading-8">
+                      <div class="text-slate-500">.notification &#123;</div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">position</span>:
+                        <span class="text-yellow-300">absolute</span>;
+                      </div>
+
+                      <div
+                        class="rounded bg-emerald-500/10 pl-6 text-emerald-400"
+                      >
+                        <span class="text-purple-400">z-index</span>:
+                        <span class="text-yellow-300">10</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- What Changed -->
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-slate-400"
+                >
+                  What changed?
+                </p>
+
+                <div class="mt-3 font-mono text-sm leading-8">
+                  <div class="rounded bg-red-50 px-4 text-red-700">
+                    - z-index: 999999;
+                  </div>
+
+                  <div class="mt-2 rounded bg-emerald-50 px-4 text-emerald-700">
+                    + z-index: 10;
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- Why Better -->
+              <div>
+                <div class="flex items-start gap-4">
+                  <div class="text-2xl">💡</div>
+
+                  <div>
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-blue-600"
+                    >
+                      Why is this better?
+                    </p>
+
+                    <h4 class="mt-1 text-lg font-black text-slate-900">
+                      Use predictable stacking.
+                    </h4>
+
+                    <p class="mt-3 leading-relaxed text-slate-600">
+                      A massive z-index value does not automatically fix a
+                      stacking-context problem.
+                    </p>
+
+                    <p class="mt-3 text-sm leading-relaxed text-slate-500">
+                      Using a small, intentional value makes the stacking order
+                      easier to understand and maintain.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- Case Closed -->
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-widest text-emerald-600"
+                  >
+                    Case Closed
+                  </p>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    The stacking order has been restored.
+                  </p>
+                </div>
+
+                <div class="text-3xl">🧑‍⚖️</div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- ====================================================== -->
+    <!-- CASE #003 — !IMPORTANT ABUSE -->
+    <!-- ====================================================== -->
+
+    @if (activeCase() === 3) {
+      <div class="mx-auto mt-10 max-w-4xl">
+        <!-- Case Header -->
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <p
+              class="text-xs font-black uppercase tracking-widest text-slate-400"
+            >
+              Evidence #003
+            </p>
+
+            <p class="mt-1 text-sm font-bold text-slate-700">
+              Cascade crime scene
+            </p>
+          </div>
+
+          @if (crimeDetected()) {
+            <span
+              class="rounded-full bg-red-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-red-700"
+            >
+              Crime Detected
+            </span>
+          }
+
+          @if (!crimeDetected()) {
+            <span
+              class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-emerald-700"
+            >
+              Scene Repaired
+            </span>
+          }
+        </div>
+
+        <!-- Specimen -->
+        <div
+          class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+          [class.important-crime]="crimeDetected()"
+          [class.repaired-crime]="!crimeDetected()"
+        >
+          <!-- Settings Header -->
+          <div class="border-b border-slate-200 px-6 py-5">
+            <p class="text-sm font-bold text-slate-400">Settings</p>
+
+            <h2 class="mt-1 text-2xl font-black text-slate-900">
+              Notification Preferences
+            </h2>
+
+            <p class="mt-2 text-sm text-slate-500">
+              Choose how you would like to receive notifications.
+            </p>
+          </div>
+
+          <!-- Settings -->
+          <div class="p-6">
+            <div class="space-y-4">
+              <!-- Email -->
+              <div
+                class="flex items-center justify-between rounded-xl border border-slate-200 p-4"
+              >
+                <div>
+                  <p class="font-bold text-slate-900">Email notifications</p>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    Receive important updates by email.
+                  </p>
+                </div>
+
+                <span
+                  class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700"
+                >
+                  Enabled
+                </span>
+              </div>
+
+              <!-- Push -->
+              <div
+                class="flex items-center justify-between rounded-xl border border-slate-200 p-4"
+              >
+                <div>
+                  <p class="font-bold text-slate-900">Push notifications</p>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    Receive notifications directly on your device.
+                  </p>
+                </div>
+
+                <span
+                  class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700"
+                >
+                  Enabled
+                </span>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="mt-8">
+              <button
+                type="button"
+                class="important-crime-button rounded-xl px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5"
+              >
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crime Description -->
+        @if (crimeDetected()) {
+          <div
+            class="mt-6 rounded-2xl border border-yellow-200 bg-yellow-50 p-5"
+          >
+            <div class="flex items-start gap-3">
+              <div class="text-2xl">⚠️</div>
+
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-yellow-600"
+                >
+                  Something is wrong
+                </p>
+
+                <p class="mt-1 font-bold text-yellow-900">
+                  The button refuses to use its intended styling.
+                </p>
+
+                <p class="mt-2 text-sm leading-relaxed text-yellow-800">
+                  Someone appears to have declared CSS war instead of fixing the
+                  cascade.
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Inspect -->
+        @if (crimeDetected()) {
+          <div class="mt-8 flex justify-center">
+            <button
+              type="button"
+              (click)="inspectCrime()"
+              class="rounded-xl bg-slate-900 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-800"
+            >
+              🔎 Inspect the Evidence
+            </button>
+          </div>
+        }
+
+        <!-- Evidence -->
+        @if (evidenceVisible()) {
+          <div
+            class="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-xl"
+          >
+            <div
+              class="flex items-center justify-between border-b border-slate-800 px-5 py-3"
+            >
+              <span
+                class="text-xs font-black uppercase tracking-widest text-slate-500"
+              >
+                suspicious.css
+              </span>
+
+              <span class="text-xs font-bold text-red-400">
+                ⚠ Cascade violation
+              </span>
+            </div>
+
+            <div class="p-5 font-mono text-sm leading-8">
+              <div class="text-slate-500">.button &#123;</div>
+
+              <div class="pl-6 text-slate-300">
+                <span class="text-purple-400">background</span>:
+                <span class="text-yellow-300">blue</span>;
+              </div>
+
+              <div class="text-slate-500">&#125;</div>
+
+              <div class="mt-4 text-slate-500">.button &#123;</div>
+
+              <div class="rounded bg-red-500/10 pl-6 text-red-400">
+                <span class="text-purple-400"> background </span>:
+
+                <span class="text-yellow-300"> green !important </span>;
+
+                <span class="ml-2 text-xs text-red-500"> ← SUSPECT </span>
+              </div>
+
+              <div class="text-slate-500">&#125;</div>
+            </div>
+          </div>
+
+          <!-- Verdict -->
+          <div class="mt-6 rounded-2xl border border-red-200 bg-red-50 p-6">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">☠️</div>
+
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-red-500"
+                >
+                  Crime Identified
+                </p>
+
+                <h3 class="mt-1 text-2xl font-black text-red-900">
+                  !important Abuse
+                </h3>
+
+                <p class="mt-3 leading-relaxed text-red-800">
+                  Someone couldn't get their CSS rule to win, so they deployed
+                  <code class="font-mono font-bold">!important</code>
+                  instead of investigating the cascade.
+                </p>
+
+                <p class="mt-3 text-sm leading-relaxed text-red-700">
+                  <code class="font-mono font-bold">!important</code>
+                  isn't automatically bad CSS. The crime is using it as a
+                  shortcut when a specificity, cascade, or component-structure
+                  problem should be fixed instead.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remove Crime -->
+          <div class="mt-6 flex justify-center">
+            <button
+              type="button"
+              (click)="removeCrime()"
+              class="rounded-xl bg-emerald-600 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-emerald-700"
+            >
+              🧹 Remove the Crime
+            </button>
+          </div>
+        }
+
+        <!-- ================================================== -->
+        <!-- CASE #003 REPAIR REPORT -->
+        <!-- ================================================== -->
+
+        @if (!crimeDetected()) {
+          <div
+            class="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+          >
+            <div class="border-b border-slate-200 bg-slate-50 px-6 py-5">
+              <p
+                class="text-xs font-black uppercase tracking-widest text-purple-600"
+              >
+                🧪 Repair Report
+              </p>
+
+              <h3 class="mt-1 text-xl font-black text-slate-900">
+                Case #003 — From !important abuse to a healthy cascade
+              </h3>
+            </div>
+
+            <div class="p-6">
+              <!-- Original / Repaired -->
+              <div class="grid gap-6 lg:grid-cols-2">
+                <!-- Original -->
+                <div>
+                  <p
+                    class="mb-3 text-xs font-black uppercase tracking-widest text-red-500"
+                  >
+                    Original CSS
+                  </p>
+
+                  <div class="overflow-hidden rounded-xl bg-slate-950">
+                    <div class="border-b border-slate-800 px-4 py-3">
+                      <span class="text-xs font-bold text-slate-500">
+                        original.css
+                      </span>
+                    </div>
+
+                    <div class="p-4 font-mono text-sm leading-8">
+                      <div class="text-slate-500">.button &#123;</div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">background</span>:
+                        <span class="text-yellow-300">blue</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+
+                      <div class="mt-4 text-slate-500">.button &#123;</div>
+
+                      <div class="rounded bg-red-500/10 pl-6 text-red-400">
+                        <span class="text-purple-400">background</span>:
+                        <span class="text-yellow-300">green !important</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Repaired -->
+                <div>
+                  <p
+                    class="mb-3 text-xs font-black uppercase tracking-widest text-emerald-600"
+                  >
+                    Repaired CSS
+                  </p>
+
+                  <div class="overflow-hidden rounded-xl bg-slate-950">
+                    <div class="border-b border-slate-800 px-4 py-3">
+                      <span class="text-xs font-bold text-slate-500">
+                        repaired.css
+                      </span>
+                    </div>
+
+                    <div class="p-4 font-mono text-sm leading-8">
+                      <div class="text-slate-500">.button &#123;</div>
+
+                      <div class="pl-6 text-slate-300">
+                        <span class="text-purple-400">background</span>:
+                        <span class="text-yellow-300">blue</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+
+                      <div class="mt-4 text-slate-500">.button &#123;</div>
+
+                      <div
+                        class="rounded bg-emerald-500/10 pl-6 text-emerald-400"
+                      >
+                        <span class="text-purple-400">background</span>:
+                        <span class="text-yellow-300">green</span>;
+                      </div>
+
+                      <div class="text-slate-500">&#125;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- What Changed -->
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-widest text-slate-400"
+                >
+                  What changed?
+                </p>
+
+                <div class="mt-3 font-mono text-sm leading-8">
+                  <div class="rounded bg-red-50 px-4 text-red-700">
+                    - background: green !important;
+                  </div>
+
+                  <div class="mt-2 rounded bg-emerald-50 px-4 text-emerald-700">
+                    + background: green;
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- Why Better -->
+              <div>
+                <div class="flex items-start gap-4">
+                  <div class="text-2xl">💡</div>
+
+                  <div>
+                    <p
+                      class="text-xs font-black uppercase tracking-widest text-blue-600"
+                    >
+                      Why is this better?
+                    </p>
+
+                    <h4 class="mt-1 text-lg font-black text-slate-900">
+                      Let the cascade do its job.
+                    </h4>
+
+                    <p class="mt-3 leading-relaxed text-slate-600">
+                      The original rule used
+                      <code class="font-mono font-bold">!important</code>
+                      to overpower the cascade instead of fixing the underlying
+                      styling conflict.
+                    </p>
+
+                    <p class="mt-3 text-sm leading-relaxed text-slate-500">
+                      Removing it keeps the CSS easier to reason about and
+                      allows specificity and source order to work normally.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-8 border-t border-slate-200"></div>
+
+              <!-- Case Closed -->
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p
+                    class="text-xs font-black uppercase tracking-widest text-emerald-600"
+                  >
+                    Case Closed
+                  </p>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    The cascade has been restored. No further !important
+                    deployment is required.
+                  </p>
+                </div>
+
+                <div class="text-3xl">🧑‍⚖️</div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </main>
+</div>
