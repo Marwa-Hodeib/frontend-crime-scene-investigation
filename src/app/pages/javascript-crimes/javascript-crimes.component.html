@@ -1,2 +1,371 @@
-<h1>JavaScript Crime Scene</h1>
-<p>Unexpected behavior detected.</p>
+<div class="mx-auto max-w-6xl space-y-8">
+  <!-- PAGE HEADER -->
+  <header>
+    <p class="text-sm font-black uppercase tracking-widest text-yellow-600">
+      JavaScript — The Visual Exhibit
+    </p>
+
+    <h1
+      class="mt-2 text-3xl font-black tracking-tight text-slate-900 md:text-4xl"
+    >
+      Don't just read the code. Watch it happen.
+    </h1>
+
+    <p class="mt-3 max-w-3xl text-base leading-relaxed text-slate-500">
+      JavaScript became much easier for me when I stopped thinking about it as
+      lines of code and started thinking about things moving, changing, waiting,
+      and reacting.
+    </p>
+  </header>
+
+  <!-- PERSONAL NOTE -->
+  <section class="rounded-2xl border border-yellow-200 bg-yellow-50 p-5">
+    <p class="text-xs font-black uppercase tracking-widest text-yellow-700">
+      A different kind of exhibit
+    </p>
+
+    <p class="mt-2 max-w-3xl text-sm leading-relaxed text-yellow-900">
+      I made this section for myself — and for people who understand things
+      better when they can see them happening.
+    </p>
+
+    <p class="mt-2 max-w-3xl text-sm leading-relaxed text-yellow-800">
+      No crime scene here. Just JavaScript, explained the way my brain
+      understands it.
+    </p>
+  </section>
+
+  <!-- EXHIBIT HEADER -->
+  <section>
+    <div class="flex flex-wrap items-center gap-3">
+      <span
+        class="rounded-full bg-slate-900 px-3 py-1 text-xs font-black uppercase tracking-widest text-white"
+      >
+        Exhibit #001
+      </span>
+
+      <span
+        class="rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-700"
+      >
+        ES6
+      </span>
+
+      <span
+        class="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700"
+      >
+        Array Methods
+      </span>
+    </div>
+
+    <h2 class="mt-4 text-2xl font-black text-slate-900">
+      Understanding
+      <code class="text-purple-600">map()</code>
+    </h2>
+
+    <p class="mt-2 text-sm text-slate-500">
+      Think of
+      <code class="font-bold text-purple-600">map()</code>
+      as a machine that takes every item, transforms it, and gives you a new
+      array.
+    </p>
+  </section>
+
+  <!-- MAIN VISUAL -->
+  <section
+    class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+  >
+    <!-- TOP LABEL -->
+    <div
+      class="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-3"
+    >
+      <p
+        class="text-[10px] font-black uppercase tracking-widest text-slate-400"
+      >
+        Watch the code execute
+      </p>
+
+      <button
+        type="button"
+        (click)="toggleSound()"
+        class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:bg-slate-100"
+      >
+        {{ soundEnabled() ? "🔊 Sound On" : "🔇 Sound Off" }}
+      </button>
+    </div>
+
+    <!-- CODE + MACHINE -->
+    <div class="p-5 md:p-8">
+      <!-- CODE -->
+      <div class="mb-7 text-center">
+        <p
+          class="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400"
+        >
+          The code
+        </p>
+
+        <div
+          class="inline-flex items-center rounded-xl border border-slate-800 bg-slate-950 px-5 py-3 font-mono text-sm shadow-md md:text-base"
+        >
+          <span class="text-purple-400"> numbers.map( </span>
+
+          <span
+            class="code-number"
+            [class.code-number-active]="currentIndex() !== -1"
+          >
+            number
+          </span>
+
+          <span class="text-slate-400"> => </span>
+
+          <span class="text-green-400">
+            {{
+              activeOperation() === "double"
+                ? "number * 2"
+                : activeOperation() === "addTen"
+                  ? "number + 10"
+                  : activeOperation() === "multiplyFive"
+                    ? "number * 5"
+                    : "number * number"
+            }}
+          </span>
+
+          <span class="text-purple-400"> ) </span>
+        </div>
+
+        @if (currentIndex() !== -1) {
+          <p class="mt-3 text-xs font-bold text-yellow-600 code-current">
+            number = {{ numbers[currentIndex()] }}
+          </p>
+        }
+      </div>
+
+      <!-- HORIZONTAL FLOW -->
+      <div class="overflow-x-auto pb-2">
+        <div
+          class="mx-auto flex min-w-[700px] items-center justify-center gap-3 md:gap-5"
+        >
+          <!-- INPUT -->
+          <div class="shrink-0 text-center">
+            <p
+              class="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400"
+            >
+              Input
+            </p>
+
+            <div class="flex items-center gap-1.5">
+              @for (number of numbers; track $index) {
+                <div
+                  class="number-box flex h-11 w-11 items-center justify-center rounded-lg border-2 border-slate-200 bg-slate-50 text-sm font-black text-slate-700"
+                  [class.number-active]="currentIndex() === $index"
+                >
+                  {{ number }}
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- ARROW -->
+          <div class="shrink-0 text-xl font-black text-slate-300">→</div>
+
+          <!-- MACHINE -->
+          <div class="shrink-0 text-center">
+            <p
+              class="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400"
+            >
+              Transform
+            </p>
+
+            <div
+              class="map-machine flex h-16 w-28 items-center justify-center rounded-xl border-2 border-purple-200 bg-purple-50 shadow-sm"
+              [class.machine-running]="isRunning()"
+            >
+              <div class="text-center">
+                <div class="text-xl font-black text-purple-600">⚙</div>
+
+                <p class="text-xs font-black text-purple-700">
+                  {{
+                    activeOperation() === "double"
+                      ? "× 2"
+                      : activeOperation() === "addTen"
+                        ? "+ 10"
+                        : activeOperation() === "multiplyFive"
+                          ? "× 5"
+                          : "Square"
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ARROW -->
+          <div class="shrink-0 text-xl font-black text-slate-300">→</div>
+
+          <!-- OUTPUT -->
+          <div class="shrink-0 text-center">
+            <p
+              class="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400"
+            >
+              New Array
+            </p>
+
+            <div class="flex min-h-11 items-center gap-1.5">
+              @for (number of mappedNumbers(); track $index) {
+                <div
+                  class="result-box flex h-11 w-11 items-center justify-center rounded-lg border-2 border-emerald-200 bg-emerald-50 text-sm font-black text-emerald-700"
+                >
+                  {{ number }}
+                </div>
+              }
+
+              @if (mappedNumbers().length === 0) {
+                <div
+                  class="flex h-11 items-center rounded-lg border-2 border-dashed border-slate-200 px-4 text-xs font-bold text-slate-400"
+                >
+                  Waiting...
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="border-t border-slate-200 bg-slate-50 p-5">
+      <div
+        class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+      >
+        <!-- OPERATIONS -->
+        <div>
+          <p
+            class="mb-2 text-xs font-black uppercase tracking-widest text-slate-400"
+          >
+            Choose transformation
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            @for (operation of operations; track operation.id) {
+              <button
+                type="button"
+                (click)="selectOperation(operation.id)"
+                [disabled]="isRunning()"
+                class="rounded-lg border px-3 py-2 text-xs font-black transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+                [class.border-purple-300]="activeOperation() === operation.id"
+                [class.bg-purple-100]="activeOperation() === operation.id"
+                [class.text-purple-700]="activeOperation() === operation.id"
+                [class.border-slate-200]="activeOperation() !== operation.id"
+                [class.bg-white]="activeOperation() !== operation.id"
+                [class.text-slate-500]="activeOperation() !== operation.id"
+              >
+                {{ operation.label }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- RUN -->
+        <button
+          type="button"
+          (click)="runMap()"
+          [disabled]="isRunning()"
+          class="shrink-0 rounded-xl bg-slate-900 px-5 py-3 text-sm font-black text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {{ isRunning() ? "Running..." : "▶ Run map()" }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS HAPPENING -->
+  <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div class="flex items-start gap-4">
+      <div
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-lg"
+      >
+        🧠
+      </div>
+
+      <div>
+        <h3 class="font-black text-slate-900">What is actually happening?</h3>
+
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          Each item in the original array is passed into the function. The
+          function transforms that item and returns a new value.
+        </p>
+
+        <div
+          class="mt-4 flex flex-wrap items-center gap-2 text-xs font-bold text-slate-500"
+        >
+          <span class="rounded-lg bg-slate-100 px-3 py-2"> Take an item </span>
+
+          <span>→</span>
+
+          <span class="rounded-lg bg-purple-100 px-3 py-2 text-purple-700">
+            Transform it
+          </span>
+
+          <span>→</span>
+
+          <span class="rounded-lg bg-emerald-100 px-3 py-2 text-emerald-700">
+            Return the result
+          </span>
+
+          <span>→</span>
+
+          <span class="rounded-lg bg-slate-100 px-3 py-2"> Repeat </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO IMPORTANT CONCEPTS -->
+  <section class="grid gap-4 md:grid-cols-2">
+    <div class="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+      <p class="text-xs font-black uppercase tracking-widest text-blue-600">
+        The callback
+      </p>
+
+      <h3 class="mt-2 font-black text-blue-950">What is "number"?</h3>
+
+      <p class="mt-2 text-sm leading-relaxed text-blue-900">
+        It's simply the variable name we chose for the current item. When the
+        first item is processed,
+        <code class="font-black">number</code>
+        is
+        <code class="font-black">1</code>. Then it becomes
+        <code class="font-black">2</code>, then
+        <code class="font-black">3</code>, and so on.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+      <p class="text-xs font-black uppercase tracking-widest text-emerald-600">
+        Important
+      </p>
+
+      <h3 class="mt-2 font-black text-emerald-950">
+        The original array stays unchanged.
+      </h3>
+
+      <p class="mt-2 text-sm leading-relaxed text-emerald-900">
+        <code class="font-black">map()</code>
+        creates a new array containing the transformed values.
+      </p>
+    </div>
+  </section>
+
+  <!-- TAKEAWAY -->
+  <section class="rounded-2xl bg-slate-900 p-6 text-white shadow-lg">
+    <p class="text-xs font-black uppercase tracking-widest text-purple-300">
+      The takeaway
+    </p>
+
+    <p class="mt-3 text-lg font-black">
+      map() = take every item → transform it → collect the results.
+    </p>
+
+    <p class="mt-2 text-sm leading-relaxed text-slate-400">
+      Once you can see that movement, the syntax becomes much less scary.
+    </p>
+  </section>
+</div>
