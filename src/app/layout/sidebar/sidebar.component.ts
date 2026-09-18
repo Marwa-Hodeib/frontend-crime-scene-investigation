@@ -23,7 +23,7 @@ export class SidebarComponent {
     { label: 'Home', path: '/' },
     { label: 'UX Crimes', path: '/ux-crimes' },
     { label: 'Angular Crimes', path: '/angular-crimes' },
-    { label: 'JavaScript Crimes', path: '/javascript-crimes' },
+    { label: 'JavaScript Visual Lab', path: '/javascript-crimes' },
     { label: 'CSS Crimes', path: '/css-crimes' },
   ];
 }
