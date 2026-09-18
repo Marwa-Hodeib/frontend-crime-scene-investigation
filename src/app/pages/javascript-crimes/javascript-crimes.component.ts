@@ -17,6 +17,7 @@ export class JavascriptCrimesComponent {
   isRunning = signal(false);
   currentIndex = signal(-1);
   soundEnabled = signal(true);
+  animationStage = signal<'idle' | 'input' | 'transform' | 'return'>('idle');
 
   toggleSound() {
     this.soundEnabled.update((enabled) => !enabled);
@@ -61,43 +62,58 @@ export class JavascriptCrimesComponent {
     this.isRunning.set(true);
     this.mappedNumbers.set([]);
     this.currentIndex.set(-1);
+    this.animationStage.set('idle');
 
     let index = 0;
 
     const processNext = () => {
       if (index >= this.numbers.length) {
         this.currentIndex.set(-1);
-        if (this.soundEnabled()) {
-          this.sound.click();
-        }
+        this.animationStage.set('idle');
         this.isRunning.set(false);
         return;
       }
 
       this.currentIndex.set(index);
 
-      const result = this.transform(this.numbers[index]);
+      // STEP 1 — pick up the current item
+      this.animationStage.set('input');
+
+      if (this.soundEnabled()) {
+        this.sound.click();
+      }
 
       setTimeout(() => {
+        // STEP 2 — transform the item
+        this.animationStage.set('transform');
+
         if (this.soundEnabled()) {
           this.sound.whoosh();
         }
-        this.mappedNumbers.update((values) => [...values, result]);
-        if (this.soundEnabled()) {
-          this.sound.ding();
-        }
 
-        index++;
+        const result = this.transform(this.numbers[index]);
 
         setTimeout(() => {
-          processNext();
-        }, 350);
-      }, 650);
+          // STEP 3 — return the result
+          this.animationStage.set('return');
+
+          if (this.soundEnabled()) {
+            this.sound.ding();
+          }
+
+          this.mappedNumbers.update((values) => [...values, result]);
+
+          index++;
+
+          setTimeout(() => {
+            processNext();
+          }, 800);
+        }, 900);
+      }, 1000);
     };
 
     processNext();
   }
-
   private transform(value: number): number {
     switch (this.activeOperation()) {
       case 'double':

@@ -1,83 +1,73 @@
-.number-box {
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background-color 0.3s ease;
-}
-
-.number-active {
-  transform: translateY(-10px) scale(1.08);
-  border-color: rgb(245 158 11);
-  background-color: rgb(255 251 235);
-}
-
-.map-machine {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.machine-running {
-  animation: machine-pulse 0.8s ease-in-out infinite alternate;
-}
-
-.result-box {
-  animation: result-appear 0.35s ease-out;
-}
-
-@keyframes machine-pulse {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.03);
-  }
-}
-
-@keyframes result-appear {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.8);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  
-}
-.code-number {
+.code-token {
+  position: relative;
   display: inline-block;
-  padding: 2px 5px;
-  margin: 0 2px;
-  border-radius: 5px;
-  color: rgb(250 204 21);
+  border-radius: 4px;
+  padding: 2px 4px;
   transition:
-    transform 0.3s ease,
-    background-color 0.3s ease,
-    box-shadow 0.3s ease;
+    color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-.code-number-active {
-  background-color: rgb(120 53 15);
-  box-shadow: 0 0 12px rgb(250 204 21 / 0.45);
-  transform: scale(1.08);
+.code-token-active {
+  transform: translateY(-1px) scale(1.08);
 }
 
-.code-current {
-  animation: code-current 0.35s ease-out;
+.code-input-token.code-token-active {
+  color: rgb(253 224 71);
+  background-color: rgb(234 179 8 / 0.15);
+
+  box-shadow:
+    0 0 8px rgb(234 179 8 / 0.7),
+    0 0 18px rgb(234 179 8 / 0.35);
+
+  animation: code-input-glow 0.7s ease-in-out infinite alternate;
 }
 
-@keyframes code-current {
+.code-transform-token.code-token-active {
+  color: rgb(192 132 252);
+  background-color: rgb(168 85 247 / 0.15);
+
+  box-shadow:
+    0 0 8px rgb(168 85 247 / 0.7),
+    0 0 18px rgb(168 85 247 / 0.35);
+
+  animation: code-transform-glow 0.7s ease-in-out infinite alternate;
+}
+
+.code-arrow-active {
+  color: rgb(168 85 247);
+
+  text-shadow:
+    0 0 8px rgb(168 85 247 / 0.8),
+    0 0 16px rgb(168 85 247 / 0.4);
+}
+
+@keyframes code-input-glow {
   from {
-    opacity: 0;
-    transform: translateY(-5px);
+    box-shadow:
+      0 0 6px rgb(234 179 8 / 0.5),
+      0 0 12px rgb(234 179 8 / 0.25);
   }
 
   to {
-    opacity: 1;
-    transform: translateY(0);
+    box-shadow:
+      0 0 12px rgb(234 179 8 / 0.9),
+      0 0 24px rgb(234 179 8 / 0.45);
+  }
+}
+
+@keyframes code-transform-glow {
+  from {
+    box-shadow:
+      0 0 6px rgb(168 85 247 / 0.5),
+      0 0 12px rgb(168 85 247 / 0.25);
+  }
+
+  to {
+    box-shadow:
+      0 0 12px rgb(168 85 247 / 0.9),
+      0 0 24px rgb(168 85 247 / 0.45);
   }
 }
