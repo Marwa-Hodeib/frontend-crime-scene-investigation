@@ -1,21 +1,21 @@
-<section class="w-full max-w-4xl mx-auto space-y-8">
+<section class="mx-auto w-full max-w-4xl space-y-8">
   <!-- ========================================================= -->
   <!-- CASE HEADER -->
   <!-- ========================================================= -->
 
   <header class="space-y-4">
     <div>
-      <p class="text-sm font-semibold tracking-widest text-red-500 uppercase">
+      <p class="text-sm font-semibold uppercase tracking-widest text-red-500">
         UX Crime Scene #001
       </p>
 
       <h1
-        class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-slate-900"
+        class="text-3xl font-bold leading-tight text-slate-900 dark:text-white sm:text-4xl md:text-5xl"
       >
         The Hidden
         <span
           (click)="fakeSubmit()"
-          class="cursor-pointer hover:text-red-500 transition-colors"
+          class="cursor-pointer transition-colors hover:text-red-500"
         >
           Submit
         </span>
@@ -25,12 +25,14 @@
 
     <div class="flex flex-wrap gap-3 text-sm">
       <span
-        class="px-3 py-1 rounded-full bg-red-100 text-red-700 font-semibold"
+        class="rounded-full bg-red-100 px-3 py-1 font-semibold text-red-700 dark:bg-red-950/40 dark:text-red-400"
       >
         Severity: Felony
       </span>
 
-      <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+      <span
+        class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+      >
         Status: Under Investigation
       </span>
     </div>
@@ -41,11 +43,11 @@
   <!-- ========================================================= -->
 
   <div class="border-l-4 border-red-500 pl-4">
-    <p class="text-lg text-slate-600 leading-relaxed">
+    <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
       The
       <span
         (click)="fakeSubmit()"
-        class="cursor-pointer hover:text-blue-500 transition-colors"
+        class="cursor-pointer transition-colors hover:text-blue-500"
       >
         submit
       </span>
@@ -60,18 +62,18 @@
   <!-- ========================================================= -->
 
   <div
-    class="rounded-2xl border-2 border-slate-200 bg-white shadow-lg overflow-hidden"
+    class="overflow-hidden rounded-2xl border-2 border-slate-200 bg-white shadow-lg transition-colors duration-300 dark:border-slate-700 dark:bg-slate-900"
   >
     <!-- Browser bar -->
     <div
-      class="flex items-center gap-2 px-4 py-3 bg-slate-100 border-b border-slate-200"
+      class="flex items-center gap-2 border-b border-slate-200 bg-slate-100 px-4 py-3 dark:border-slate-700 dark:bg-slate-800"
     >
-      <span class="w-3 h-3 rounded-full bg-red-400"></span>
-      <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
-      <span class="w-3 h-3 rounded-full bg-green-400"></span>
+      <span class="h-3 w-3 rounded-full bg-red-400"></span>
+      <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+      <span class="h-3 w-3 rounded-full bg-green-400"></span>
 
       <div
-        class="ml-2 sm:ml-4 flex-1 bg-white rounded-md px-3 py-2 text-xs text-slate-400 truncate"
+        class="ml-2 flex flex-1 truncate rounded-md bg-white px-3 py-2 text-xs text-slate-400 dark:bg-slate-950 dark:text-slate-500 sm:ml-4"
       >
         terrible-ux.com/create-account
       </div>
@@ -81,21 +83,26 @@
     <!-- FORM -->
     <!-- ======================================================= -->
 
-    <form class="p-5 sm:p-6 md:p-7 space-y-4" (ngSubmit)="onSubmit()">
+    <form class="space-y-4 p-5 sm:p-6 md:p-7" (ngSubmit)="onSubmit()">
       <!-- Form heading -->
       <div class="space-y-1">
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+        <h2
+          class="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl"
+        >
           Create your account
         </h2>
 
-        <p class="text-sm text-slate-500">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
           It will only take a minute. Probably.
         </p>
       </div>
 
       <!-- Full name -->
       <div class="space-y-1">
-        <label for="name" class="block text-sm font-medium text-slate-700">
+        <label
+          for="name"
+          class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+        >
           Full name
         </label>
 
@@ -105,13 +112,16 @@
           [(ngModel)]="formData.name"
           type="text"
           placeholder="John Doe"
-          class="w-full rounded-lg border border-slate-300 px-4 py-2.5 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+          class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-600 dark:focus:border-slate-500 dark:focus:ring-slate-800"
         />
       </div>
 
       <!-- Email -->
       <div class="space-y-1">
-        <label for="email" class="block text-sm font-medium text-slate-700">
+        <label
+          for="email"
+          class="block text-sm font-medium text-slate-700 dark:text-slate-300"
+        >
           Email address
         </label>
 
@@ -121,7 +131,7 @@
           [(ngModel)]="formData.email"
           type="email"
           placeholder="john@example.com"
-          class="w-full rounded-lg border border-slate-300 px-4 py-2.5 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+          class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-600 dark:focus:border-slate-500 dark:focus:ring-slate-800"
         />
       </div>
 
@@ -129,7 +139,7 @@
       <div class="space-y-1">
         <label
           for="technology"
-          class="block text-sm font-medium text-slate-700"
+          class="block text-sm font-medium text-slate-700 dark:text-slate-300"
         >
           Favorite frontend technology
         </label>
@@ -138,7 +148,7 @@
           id="technology"
           name="technology"
           [(ngModel)]="formData.technology"
-          class="w-full rounded-lg border border-slate-300 px-4 py-2.5 bg-white outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+          class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-slate-500 dark:focus:ring-slate-800"
         >
           <option value="">Select one...</option>
           <option value="angular">Angular</option>
@@ -152,12 +162,12 @@
       <!-- Fake checkbox -->
       <label
         (click)="fakeCheckbox()"
-        class="flex items-start gap-3 text-sm text-slate-600 cursor-pointer"
+        class="flex cursor-pointer items-start gap-3 text-sm text-slate-600 dark:text-slate-300"
       >
         <input
           type="checkbox"
           name="agree"
-          class="mt-1 h-4 w-4 pointer-events-none"
+          class="pointer-events-none mt-1 h-4 w-4"
         />
 
         <span> I promise I won't commit any frontend crimes. </span>
@@ -167,18 +177,22 @@
       <!-- INVESTIGATION -->
       <!-- ===================================================== -->
 
-      <div class="border-y border-slate-200 py-4 space-y-3">
+      <div
+        class="space-y-3 border-y border-slate-200 py-4 dark:border-slate-700"
+      >
         <div class="flex items-center justify-between gap-4">
           <div>
             <p class="text-[10px] uppercase tracking-widest text-slate-400">
               Investigation
             </p>
 
-            <p class="font-bold text-base sm:text-lg text-slate-900">
+            <p
+              class="text-base font-bold text-slate-900 dark:text-white sm:text-lg"
+            >
               Find the
               <span
                 (click)="fakeSubmit()"
-                class="cursor-pointer hover:text-red-500 transition-colors"
+                class="cursor-pointer transition-colors hover:text-red-500"
               >
                 submit
               </span>
@@ -186,7 +200,7 @@
             </p>
           </div>
 
-          <div class="text-right shrink-0">
+          <div class="shrink-0 text-right">
             <p class="text-xs text-slate-400">Attempts</p>
 
             <p class="text-xl font-bold text-yellow-500">
@@ -195,18 +209,18 @@
           </div>
         </div>
 
-        <p class="text-sm text-slate-500 leading-relaxed">
+        <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
           Complete the form and
           <span
             (click)="fakeSubmit()"
-            class="cursor-pointer hover:text-red-500 transition-colors"
+            class="cursor-pointer transition-colors hover:text-red-500"
           >
             submit
           </span>
           it. The
           <span
             (click)="fakeSubmit()"
-            class="cursor-pointer hover:text-pink-500 transition-colors"
+            class="cursor-pointer transition-colors hover:text-pink-500"
           >
             submit
           </span>
@@ -216,7 +230,7 @@
         <button
           type="button"
           (click)="requestHint()"
-          class="text-sm px-4 py-2 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-100 transition-colors"
+          class="rounded-lg border border-slate-300 px-4 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           💡 Request a hint
         </button>
@@ -227,7 +241,7 @@
         <button
           type="button"
           (click)="onFakeButtonClick('save')"
-          class="px-4 py-2.5 rounded-lg border border-slate-300 text-sm text-slate-600 hover:bg-slate-100 transition-colors"
+          class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           Save Draft
         </button>
@@ -235,7 +249,7 @@
         <button
           type="button"
           (click)="onFakeButtonClick('cancel')"
-          class="px-4 py-2.5 rounded-lg bg-slate-200 text-sm text-slate-700 hover:bg-slate-300 transition-colors"
+          class="rounded-lg bg-slate-200 px-4 py-2.5 text-sm text-slate-700 transition-colors hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
         >
           Cancel
         </button>
@@ -245,7 +259,7 @@
       <div class="relative h-16">
         <button
           type="submit"
-          class="absolute bottom-0 right-0 text-[10px] text-slate-300 hover:text-slate-500 transition-colors cursor-pointer"
+          class="absolute bottom-0 right-0 cursor-pointer text-[10px] text-slate-300 transition-colors hover:text-slate-500 dark:text-slate-700 dark:hover:text-slate-400"
         >
           submit
         </button>
@@ -257,25 +271,25 @@
   <!-- COMPACT CASE REPORT -->
   <!-- ========================================================= -->
 
-  <section class="rounded-2xl bg-slate-900 text-white p-5 sm:p-6 space-y-5">
+  <section class="space-y-5 rounded-2xl bg-slate-900 p-5 text-white sm:p-6">
     <!-- Heading -->
     <div class="flex items-center justify-between gap-4">
-      <p class="text-sm font-semibold tracking-widest text-red-400 uppercase">
+      <p class="text-sm font-semibold uppercase tracking-widest text-red-400">
         Case Report
       </p>
 
-      <span class="text-2xl"> 🚨 </span>
+      <span class="text-2xl">🚨</span>
     </div>
 
     <!-- Final Verdict -->
     <div class="border-b border-slate-700 pb-5">
-      <p class="text-xs font-semibold tracking-widest text-slate-400 uppercase">
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">
         🚨 Final Verdict
       </p>
 
-      <h2 class="mt-1 text-3xl sm:text-4xl font-black text-white">GUILTY.</h2>
+      <h2 class="mt-1 text-3xl font-black text-white sm:text-4xl">GUILTY.</h2>
 
-      <p class="mt-1 text-sm sm:text-base text-slate-400">
+      <p class="mt-1 text-sm text-slate-400 sm:text-base">
         The primary action was intentionally buried.
       </p>
     </div>
@@ -284,17 +298,17 @@
     <div class="space-y-3">
       <div>
         <p
-          class="text-xs font-semibold tracking-widest text-emerald-400 uppercase"
+          class="text-xs font-semibold uppercase tracking-widest text-emerald-400"
         >
           🛠️ Case Resolution
         </p>
 
-        <h3 class="mt-1 text-xl sm:text-2xl font-bold text-white">
+        <h3 class="mt-1 text-xl font-bold text-white sm:text-2xl">
           How it should have been done
         </h3>
       </div>
 
-      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+      <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
         A primary action should be visually prominent, predictable, and easy to
         locate.
       </p>
@@ -303,7 +317,7 @@
         <button
           type="button"
           (click)="openResolutionModal()"
-          class="px-6 py-3 rounded-xl bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors"
+          class="rounded-xl bg-white px-6 py-3 font-bold text-slate-900 transition-colors hover:bg-slate-100"
         >
           View Resolution
         </button>
@@ -317,27 +331,31 @@
 
   <section class="space-y-5">
     <div>
-      <p class="text-sm font-semibold tracking-widest text-red-500 uppercase">
+      <p class="text-sm font-semibold uppercase tracking-widest text-red-500">
         Case Evidence
       </p>
 
-      <h2 class="text-2xl font-bold text-slate-900 mt-1">
+      <h2 class="mt-1 text-2xl font-bold text-slate-900 dark:text-white">
         Why this is a crime
       </h2>
     </div>
 
-    <div class="border-y border-slate-200 divide-y divide-slate-200">
+    <div
+      class="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800"
+    >
       <!-- Evidence 01 -->
       <article class="py-5">
         <div class="flex items-start gap-4">
-          <span class="text-xl shrink-0"> 👻 </span>
+          <span class="shrink-0 text-xl">👻</span>
 
           <div>
-            <h3 class="font-bold text-slate-900">
+            <h3 class="font-bold text-slate-900 dark:text-white">
               The primary action is invisible
             </h3>
 
-            <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            <p
+              class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+            >
               Users should never have to search the interface for the action
               that completes the task.
             </p>
@@ -348,14 +366,16 @@
       <!-- Evidence 02 -->
       <article class="py-5">
         <div class="flex items-start gap-4">
-          <span class="text-xl shrink-0"> 🧭 </span>
+          <span class="shrink-0 text-xl">🧭</span>
 
           <div>
-            <h3 class="font-bold text-slate-900">
+            <h3 class="font-bold text-slate-900 dark:text-white">
               The interface gives no clear visual hierarchy
             </h3>
 
-            <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            <p
+              class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+            >
               A primary action should visually stand out from secondary actions
               such as Save Draft or Cancel.
             </p>
@@ -366,12 +386,16 @@
       <!-- Evidence 03 -->
       <article class="py-5">
         <div class="flex items-start gap-4">
-          <span class="text-xl shrink-0"> 🧠 </span>
+          <span class="shrink-0 text-xl">🧠</span>
 
           <div>
-            <h3 class="font-bold text-slate-900">Users are forced to guess</h3>
+            <h3 class="font-bold text-slate-900 dark:text-white">
+              Users are forced to guess
+            </h3>
 
-            <p class="mt-1 text-sm text-slate-600 leading-relaxed">
+            <p
+              class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+            >
               Good UX reduces unnecessary decisions. Hiding the submit button
               creates friction where none should exist.
             </p>
@@ -391,7 +415,7 @@
       (click)="closeModal()"
     >
       <div
-        class="ux-crime-modal w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl"
+        class="ux-crime-modal w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl dark:border-slate-700 dark:bg-slate-900"
         (click)="$event.stopPropagation()"
       >
         <!-- =================================================== -->
@@ -401,7 +425,7 @@
         @if (modalType() === "error") {
           <div class="flex items-start gap-3">
             <div
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-100 text-lg"
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-100 text-lg dark:bg-red-950/40"
             >
               🚨
             </div>
@@ -413,20 +437,22 @@
                 UX Crime Detected
               </p>
 
-              <h3 class="mt-1 text-lg font-bold text-slate-900">
+              <h3 class="mt-1 text-lg font-bold text-slate-900 dark:text-white">
                 Nice try. 😭
               </h3>
             </div>
           </div>
 
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">
+          <p
+            class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300"
+          >
             {{ modalMessage() }}
           </p>
 
           <button
             type="button"
             (click)="closeModal()"
-            class="mt-5 w-full rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+            class="mt-5 w-full rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
           >
             Got it 😭
           </button>
@@ -439,32 +465,34 @@
         @if (modalType() === "hint") {
           <div class="flex items-start gap-3">
             <div
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-100 text-lg"
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-100 text-lg dark:bg-yellow-950/40"
             >
               💡
             </div>
 
             <div>
               <p
-                class="text-[10px] font-black uppercase tracking-widest text-yellow-600"
+                class="text-[10px] font-black uppercase tracking-widest text-yellow-600 dark:text-yellow-400"
               >
                 Field Note
               </p>
 
-              <h3 class="mt-1 text-lg font-bold text-slate-900">
+              <h3 class="mt-1 text-lg font-bold text-slate-900 dark:text-white">
                 A little help. 👀
               </h3>
             </div>
           </div>
 
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">
+          <p
+            class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300"
+          >
             {{ modalMessage() }}
           </p>
 
           <button
             type="button"
             (click)="closeModal()"
-            class="mt-5 w-full rounded-xl bg-yellow-400 px-4 py-2.5 text-sm font-bold text-slate-900 transition hover:bg-yellow-300"
+            class="mt-5 w-full rounded-xl bg-yellow-400 px-4 py-2.5 font-bold text-slate-900 transition hover:bg-yellow-300"
           >
             Continue investigating 🔎
           </button>
@@ -477,22 +505,26 @@
         @if (modalType() === "success") {
           <div class="text-center">
             <div
-              class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-green-100 text-2xl"
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-green-100 text-2xl dark:bg-green-950/40"
             >
               🚨
             </div>
 
             <p
-              class="mt-4 text-[10px] font-black uppercase tracking-widest text-green-600"
+              class="mt-4 text-[10px] font-black uppercase tracking-widest text-green-600 dark:text-green-400"
             >
               Button Located
             </p>
 
-            <h3 class="mt-1 text-2xl font-black text-green-900">
+            <h3
+              class="mt-1 text-2xl font-black text-green-900 dark:text-green-400"
+            >
               YOU FOUND IT. 🎉
             </h3>
 
-            <p class="mt-3 text-sm leading-relaxed text-slate-600">
+            <p
+              class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300"
+            >
               It took you
               <strong>
                 {{ attempts }}
@@ -501,14 +533,16 @@
               to find a button that should have been obvious.
             </p>
 
-            <p class="mt-3 text-sm font-semibold text-green-700">
+            <p
+              class="mt-3 text-sm font-semibold text-green-700 dark:text-green-400"
+            >
               Congratulations. You survived a UX crime.
             </p>
 
             <button
               type="button"
               (click)="openResolutionModal()"
-              class="mt-5 w-full rounded-xl bg-green-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-green-700"
+              class="mt-5 w-full rounded-xl bg-green-600 px-4 py-2.5 font-bold text-white transition hover:bg-green-700"
             >
               See the resolution 🔎
             </button>
@@ -523,25 +557,29 @@
           <div>
             <div class="flex items-start gap-3">
               <div
-                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-lg"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-lg dark:bg-emerald-950/40"
               >
                 🛠️
               </div>
 
               <div>
                 <p
-                  class="text-[10px] font-black uppercase tracking-widest text-emerald-600"
+                  class="text-[10px] font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400"
                 >
                   Case Resolution
                 </p>
 
-                <h3 class="mt-1 text-lg font-bold text-slate-900">
+                <h3
+                  class="mt-1 text-lg font-bold text-slate-900 dark:text-white"
+                >
                   How it should have been done
                 </h3>
               </div>
             </div>
 
-            <p class="mt-4 text-sm leading-relaxed text-slate-600">
+            <p
+              class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300"
+            >
               A primary action should be visually prominent, predictable, and
               easy to locate.
             </p>
@@ -549,13 +587,13 @@
             <div class="mt-5 flex flex-wrap items-center gap-3">
               <button
                 type="button"
-                class="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-bold text-white"
+                class="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-bold text-white dark:bg-white dark:text-slate-900"
               >
                 Submit
               </button>
 
               <span
-                class="text-xs font-bold tracking-widest text-emerald-600 uppercase"
+                class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400"
               >
                 ✓ Case Closed
               </span>
@@ -564,7 +602,7 @@
             <button
               type="button"
               (click)="closeModal()"
-              class="mt-5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+              class="mt-5 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               Close Case
             </button>

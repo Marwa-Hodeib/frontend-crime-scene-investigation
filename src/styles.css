@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  background: #0b0d12;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #0b0d12;
+  color: #f8fafc;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html.light body {
+  background: #f8fafc;
+  color: #0f172a;
+}

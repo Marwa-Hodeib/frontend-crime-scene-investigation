@@ -1,25 +1,29 @@
-<section class="w-full max-w-5xl mx-auto space-y-8">
+<section
+  class="mx-auto w-full max-w-5xl space-y-8 text-slate-900 transition-colors duration-300 dark:text-slate-100"
+>
   <!-- CASE HEADER -->
 
   <header class="space-y-4">
-    <p class="text-sm font-semibold tracking-widest text-red-500 uppercase">
+    <p class="text-sm font-semibold uppercase tracking-widest text-red-500">
       Angular Crime Scene #001
     </p>
 
     <h1
-      class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-slate-900"
+      class="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white"
     >
       The Angular Impersonator
     </h1>
 
     <div class="flex flex-wrap gap-3 text-sm">
       <span
-        class="px-3 py-1 rounded-full bg-red-100 text-red-700 font-semibold"
+        class="rounded-full bg-red-100 px-3 py-1 font-semibold text-red-700 dark:bg-red-950/40 dark:text-red-400"
       >
         Severity: Felony
       </span>
 
-      <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600">
+      <span
+        class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+      >
         Status: Under Investigation
       </span>
     </div>
@@ -27,12 +31,12 @@
 
   <!-- CRIME DESCRIPTION -->
 
-  <p class="text-lg text-slate-600 leading-relaxed">
+  <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
     This application was built with Angular. Unfortunately, nobody told the
     developer.
   </p>
 
-  <p class="mt-2 text-sm text-slate-400">
+  <p class="mt-2 text-sm text-slate-400 dark:text-slate-500">
     Investigate the application and find out how much Angular has been replaced
     by vanilla JavaScript.
   </p>
@@ -40,38 +44,47 @@
   <!-- INVESTIGATION TABS -->
 
   <div class="mt-8">
-    <div class="flex rounded-xl bg-slate-100 p-1 border border-slate-200">
+    <div
+      class="flex rounded-xl border border-slate-200 bg-slate-100 p-1 dark:border-slate-700 dark:bg-slate-900"
+    >
       <!-- VANILLA JS TAB -->
 
       <button
         type="button"
         (click)="selectTab('vanilla')"
-        class="flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-bold transition-colors"
+        class="flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-bold transition-colors"
         [class.bg-white]="activeTab() === 'vanilla'"
         [class.text-red-600]="activeTab() === 'vanilla'"
         [class.shadow-sm]="activeTab() === 'vanilla'"
         [class.text-slate-500]="activeTab() !== 'vanilla'"
+        [class.dark:bg-slate-800]="activeTab() === 'vanilla'"
+        [class.dark:text-red-400]="activeTab() === 'vanilla'"
+        [class.dark:text-slate-400]="activeTab() !== 'vanilla'"
       >
         <img
           src="/assets/vanilla-js.svg"
           alt="JavaScript logo"
-          class="w-7 h-7"
+          class="h-7 w-7"
         />
 
         <span>Vanilla JS</span>
       </button>
 
       <!-- ANGULAR TAB -->
+
       <button
         type="button"
         (click)="selectTab('angular')"
-        class="flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-bold transition-colors"
+        class="flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-bold transition-colors"
         [class.bg-white]="activeTab() === 'angular'"
         [class.text-emerald-600]="activeTab() === 'angular'"
         [class.shadow-sm]="activeTab() === 'angular'"
         [class.text-slate-500]="activeTab() !== 'angular'"
+        [class.dark:bg-slate-800]="activeTab() === 'angular'"
+        [class.dark:text-emerald-400]="activeTab() === 'angular'"
+        [class.dark:text-slate-400]="activeTab() !== 'angular'"
       >
-        <img src="/assets/angular.svg" alt="Angular logo" class="w-7 h-7" />
+        <img src="/assets/angular.svg" alt="Angular logo" class="h-7 w-7" />
 
         <span>Angular</span>
       </button>
@@ -86,46 +99,52 @@
     <!-- CRIME SCENE -->
 
     <div
-      class="rounded-2xl border-2 border-slate-200 bg-white shadow-lg overflow-hidden"
+      class="overflow-hidden rounded-2xl border-2 border-slate-200 bg-white shadow-lg transition-colors duration-300 dark:border-slate-700 dark:bg-slate-900"
     >
       <!-- APP HEADER -->
 
       <div
-        class="flex items-center justify-between px-5 py-4 bg-slate-100 border-b border-slate-200"
+        class="flex items-center justify-between border-b border-slate-200 bg-slate-100 px-5 py-4 dark:border-slate-700 dark:bg-slate-800"
       >
         <div>
           <p class="text-xs uppercase tracking-widest text-slate-400">
             Suspect Application
           </p>
 
-          <h2 class="font-bold text-slate-900">User Dashboard</h2>
+          <h2 class="font-bold text-slate-900 dark:text-white">
+            User Dashboard
+          </h2>
         </div>
 
-        <span class="text-xs text-slate-400 font-mono"> Angular™ </span>
+        <span class="font-mono text-xs text-slate-400"> Angular™ </span>
       </div>
 
       <!-- APP CONTENT -->
 
-      <div class="p-6 sm:p-8 space-y-6">
+      <div class="space-y-6 p-6 sm:p-8">
         <!-- USER -->
 
         <div class="flex items-center gap-4">
           <div
-            class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-xl"
+            class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 text-xl dark:bg-slate-700"
           >
             👤
           </div>
 
           <div>
-            <p class="font-bold text-slate-900">Marwa</p>
+            <p class="font-bold text-slate-900 dark:text-white">Marwa</p>
 
-            <p class="text-sm text-slate-500">Frontend Developer</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              Frontend Developer
+            </p>
           </div>
         </div>
 
         <!-- STATUS -->
 
-        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+        <div
+          class="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950/60"
+        >
           <p class="text-xs uppercase tracking-widest text-slate-400">
             Current status
           </p>
@@ -137,7 +156,7 @@
           <button
             type="button"
             (click)="goOnline()"
-            class="mt-4 px-5 py-3 rounded-lg bg-slate-900 text-white font-semibold hover:bg-slate-800 transition-colors"
+            class="mt-4 rounded-lg bg-slate-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
           >
             {{ isOnline() ? "Go Offline" : "Go Online" }}
           </button>
@@ -148,32 +167,40 @@
     <!-- VANILLA JS EVIDENCE -->
 
     <div
-      class="mt-8 rounded-2xl border-2 border-red-200 bg-red-50 overflow-hidden"
+      class="mt-8 overflow-hidden rounded-2xl border-2 border-red-200 bg-red-50 dark:border-red-900/60 dark:bg-red-950/20"
     >
       <!-- EVIDENCE HEADER -->
 
-      <div class="px-5 py-4 bg-red-100 border-b border-red-200">
-        <p class="text-xs uppercase tracking-widest text-red-500 font-bold">
+      <div
+        class="border-b border-red-200 bg-red-100 px-5 py-4 dark:border-red-900/60 dark:bg-red-950/40"
+      >
+        <p class="text-xs font-bold uppercase tracking-widest text-red-500">
           🚨 Forensic Evidence
         </p>
 
-        <h3 class="mt-1 text-xl font-bold text-red-900">Crime Detected</h3>
+        <h3 class="mt-1 text-xl font-bold text-red-900 dark:text-red-300">
+          Crime Detected
+        </h3>
       </div>
 
       <!-- EVIDENCE -->
 
-      <div class="p-6 space-y-4">
-        <p class="text-sm text-red-900">
+      <div class="space-y-4 p-6">
+        <p class="text-sm text-red-900 dark:text-red-200">
           The application is using Angular...
           <strong>but refuses to let Angular do its job.</strong>
         </p>
 
         <!-- EVIDENCE ITEM -->
 
-        <div class="rounded-xl bg-white border border-red-200 p-4">
-          <p class="font-mono text-sm text-red-600">document.querySelector()</p>
+        <div
+          class="rounded-xl border border-red-200 bg-white p-4 dark:border-red-900/50 dark:bg-slate-900"
+        >
+          <p class="font-mono text-sm text-red-600 dark:text-red-400">
+            document.querySelector()
+          </p>
 
-          <p class="mt-1 text-sm text-slate-600">
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
             Manually searching the DOM for an element Angular already knows
             about.
           </p>
@@ -181,10 +208,14 @@
 
         <!-- EVIDENCE ITEM -->
 
-        <div class="rounded-xl bg-white border border-red-200 p-4">
-          <p class="font-mono text-sm text-red-600">textContent</p>
+        <div
+          class="rounded-xl border border-red-200 bg-white p-4 dark:border-red-900/50 dark:bg-slate-900"
+        >
+          <p class="font-mono text-sm text-red-600 dark:text-red-400">
+            textContent
+          </p>
 
-          <p class="mt-1 text-sm text-slate-600">
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
             Manually changing displayed text instead of using Angular template
             binding.
           </p>
@@ -192,10 +223,14 @@
 
         <!-- EVIDENCE ITEM -->
 
-        <div class="rounded-xl bg-white border border-red-200 p-4">
-          <p class="font-mono text-sm text-red-600">classList</p>
+        <div
+          class="rounded-xl border border-red-200 bg-white p-4 dark:border-red-900/50 dark:bg-slate-900"
+        >
+          <p class="font-mono text-sm text-red-600 dark:text-red-400">
+            classList
+          </p>
 
-          <p class="mt-1 text-sm text-slate-600">
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
             Manually changing CSS classes instead of letting Angular control the
             UI.
           </p>
@@ -203,12 +238,12 @@
 
         <!-- VERDICT -->
 
-        <div class="pt-4 border-t border-red-200">
-          <p class="font-bold text-red-800">
+        <div class="border-t border-red-200 pt-4 dark:border-red-900/60">
+          <p class="font-bold text-red-800 dark:text-red-300">
             3 counts of unnecessary DOM manipulation.
           </p>
 
-          <p class="mt-1 text-sm text-red-700">
+          <p class="mt-1 text-sm text-red-700 dark:text-red-400">
             The suspect clearly has access to Angular... and chose violence.
           </p>
         </div>
@@ -224,48 +259,56 @@
     <!-- ANGULAR VERSION -->
 
     <div
-      class="rounded-2xl border-2 border-emerald-200 bg-white shadow-lg overflow-hidden"
+      class="overflow-hidden rounded-2xl border-2 border-emerald-200 bg-white shadow-lg transition-colors duration-300 dark:border-emerald-900/60 dark:bg-slate-900"
     >
       <!-- APP HEADER -->
 
       <div
-        class="flex items-center justify-between px-5 py-4 bg-emerald-50 border-b border-emerald-200"
+        class="flex items-center justify-between border-b border-emerald-200 bg-emerald-50 px-5 py-4 dark:border-emerald-900/60 dark:bg-emerald-950/30"
       >
         <div>
           <p
-            class="text-xs uppercase tracking-widest text-emerald-600 font-bold"
+            class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400"
           >
             Clean Implementation
           </p>
 
-          <h2 class="font-bold text-slate-900">User Dashboard</h2>
+          <h2 class="font-bold text-slate-900 dark:text-white">
+            User Dashboard
+          </h2>
         </div>
 
-        <span class="text-xs text-emerald-600 font-mono"> Angular ✓ </span>
+        <span class="font-mono text-xs text-emerald-600 dark:text-emerald-400">
+          Angular ✓
+        </span>
       </div>
 
       <!-- APP CONTENT -->
 
-      <div class="p-6 sm:p-8 space-y-6">
+      <div class="space-y-6 p-6 sm:p-8">
         <!-- USER -->
 
         <div class="flex items-center gap-4">
           <div
-            class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-xl"
+            class="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-xl dark:bg-emerald-950/50"
           >
             👤
           </div>
 
           <div>
-            <p class="font-bold text-slate-900">Marwa</p>
+            <p class="font-bold text-slate-900 dark:text-white">Marwa</p>
 
-            <p class="text-sm text-slate-500">Frontend Developer</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              Frontend Developer
+            </p>
           </div>
         </div>
 
         <!-- STATUS -->
 
-        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+        <div
+          class="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950/60"
+        >
           <p class="text-xs uppercase tracking-widest text-slate-400">
             Current status
           </p>
@@ -281,7 +324,7 @@
           <button
             type="button"
             (click)="goOnlineAngular()"
-            class="mt-4 px-5 py-3 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+            class="mt-4 rounded-lg bg-emerald-600 px-5 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
           >
             {{ isOnline() ? "Go Offline" : "Go Online" }}
           </button>
@@ -292,29 +335,35 @@
     <!-- ANGULAR EXPLANATION -->
 
     <div
-      class="mt-8 rounded-2xl border-2 border-emerald-200 bg-emerald-50 overflow-hidden"
+      class="mt-8 overflow-hidden rounded-2xl border-2 border-emerald-200 bg-emerald-50 dark:border-emerald-900/60 dark:bg-emerald-950/20"
     >
-      <div class="px-5 py-4 bg-emerald-100 border-b border-emerald-200">
-        <p class="text-xs uppercase tracking-widest text-emerald-600 font-bold">
+      <div
+        class="border-b border-emerald-200 bg-emerald-100 px-5 py-4 dark:border-emerald-900/60 dark:bg-emerald-950/40"
+      >
+        <p
+          class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400"
+        >
           🧪 Angular Reconstruction
         </p>
 
-        <h3 class="mt-1 text-xl font-bold text-emerald-900">
+        <h3
+          class="mt-1 text-xl font-bold text-emerald-900 dark:text-emerald-300"
+        >
           How Angular Intended This To Work
         </h3>
       </div>
 
-      <div class="p-6 space-y-6">
-        <p class="text-sm text-emerald-900">
+      <div class="space-y-6 p-6">
+        <p class="text-sm text-emerald-900 dark:text-emerald-200">
           Instead of manually finding and modifying DOM elements, Angular reacts
           to state changes and updates the UI for us.
         </p>
 
         <!-- CODE -->
 
-        <div class="rounded-xl bg-slate-900 p-5 overflow-x-auto">
+        <div class="overflow-x-auto rounded-xl bg-slate-900 p-5">
           <pre
-            class="text-sm text-slate-200 font-mono leading-relaxed"
+            class="font-mono text-sm leading-relaxed text-slate-200"
           ><code>status = signal('Offline');
 isOnline = signal(false);
 
@@ -327,18 +376,26 @@ goOnlineAngular() &#123;
         <!-- ANGULAR CONCEPTS -->
 
         <div class="grid gap-4 sm:grid-cols-2">
-          <div class="rounded-xl bg-white border border-emerald-200 p-4">
-            <p class="font-bold text-emerald-700">🧠 State</p>
+          <div
+            class="rounded-xl border border-emerald-200 bg-white p-4 dark:border-emerald-900/50 dark:bg-slate-900"
+          >
+            <p class="font-bold text-emerald-700 dark:text-emerald-400">
+              🧠 State
+            </p>
 
-            <p class="mt-1 text-sm text-slate-600">
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
               Angular keeps track of the application's state.
             </p>
           </div>
 
-          <div class="rounded-xl bg-white border border-emerald-200 p-4">
-            <p class="font-bold text-emerald-700">⚡ Reactivity</p>
+          <div
+            class="rounded-xl border border-emerald-200 bg-white p-4 dark:border-emerald-900/50 dark:bg-slate-900"
+          >
+            <p class="font-bold text-emerald-700 dark:text-emerald-400">
+              ⚡ Reactivity
+            </p>
 
-            <p class="mt-1 text-sm text-slate-600">
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
               When the state changes, Angular updates the UI for us.
             </p>
           </div>
@@ -346,12 +403,14 @@ goOnlineAngular() &#123;
 
         <!-- VERDICT -->
 
-        <div class="pt-4 border-t border-emerald-200">
-          <p class="font-bold text-emerald-800">
+        <div
+          class="border-t border-emerald-200 pt-4 dark:border-emerald-900/60"
+        >
+          <p class="font-bold text-emerald-800 dark:text-emerald-300">
             No querySelector. No textContent. No classList.
           </p>
 
-          <p class="mt-1 text-sm text-emerald-700">
+          <p class="mt-1 text-sm text-emerald-700 dark:text-emerald-400">
             Just state → template → UI.
           </p>
         </div>
@@ -363,23 +422,23 @@ goOnlineAngular() &#123;
 
   @if (showError()) {
     <div
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
     >
       <div
-        class="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl border-2 border-red-500"
+        class="w-full max-w-lg overflow-hidden rounded-2xl border-2 border-red-500 bg-white shadow-2xl dark:bg-slate-900"
         [class.shake-error]="shakeError()"
       >
         <!-- ERROR HEADER -->
 
         <div class="flex items-center gap-3 bg-red-600 px-5 py-4 text-white">
           <div
-            class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-red-600 font-black"
+            class="flex h-9 w-9 items-center justify-center rounded-full bg-white font-black text-red-600"
           >
             !
           </div>
 
           <div>
-            <p class="text-xs uppercase tracking-widest font-bold opacity-80">
+            <p class="text-xs font-bold uppercase tracking-widest opacity-80">
               Angular Runtime Error
             </p>
 
@@ -390,15 +449,17 @@ goOnlineAngular() &#123;
         <!-- ERROR CONTENT -->
 
         <div class="p-6">
-          <p class="font-mono text-sm font-bold text-red-600">
+          <p class="font-mono text-sm font-bold text-red-600 dark:text-red-400">
             NG-IMPERSONATOR-001
           </p>
 
-          <h3 class="mt-3 text-xl font-bold text-slate-900">
+          <h3 class="mt-3 text-xl font-bold text-slate-900 dark:text-white">
             Unauthorized DOM manipulation detected.
           </h3>
 
-          <p class="mt-3 text-sm leading-relaxed text-slate-600">
+          <p
+            class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300"
+          >
             Angular has detected that someone is manually modifying the DOM
             instead of letting Angular do its job.
           </p>
@@ -419,12 +480,14 @@ goOnlineAngular() &#123;
 
           <!-- SUSPECT -->
 
-          <div class="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
-            <p class="text-xs uppercase tracking-widest text-red-500 font-bold">
+          <div
+            class="mt-5 rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-900/50 dark:bg-red-950/30"
+          >
+            <p class="text-xs font-bold uppercase tracking-widest text-red-500">
               Possible cause
             </p>
 
-            <p class="mt-1 font-semibold text-red-900">
+            <p class="mt-1 font-semibold text-red-900 dark:text-red-300">
               Developer forgot Angular exists.
             </p>
           </div>
@@ -434,7 +497,7 @@ goOnlineAngular() &#123;
           <button
             type="button"
             (click)="showError.set(false)"
-            class="mt-6 w-full rounded-lg bg-slate-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-slate-800"
+            class="mt-6 w-full rounded-lg bg-slate-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
           >
             I Understand My Crimes
           </button>

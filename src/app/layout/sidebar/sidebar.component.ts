@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,21 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
+  private themeService = inject(ThemeService);
+
   isOpen = signal(false);
+
+  navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'UX Crimes', path: '/ux-crimes' },
+    { label: 'Angular Crimes', path: '/angular-crimes' },
+    { label: 'JavaScript Visual Lab', path: '/javascript-crimes' },
+    { label: 'CSS Crimes', path: '/css-crimes' },
+  ];
+
+  get theme() {
+    return this.themeService.theme;
+  }
 
   toggle() {
     this.isOpen.set(!this.isOpen());
@@ -19,11 +34,7 @@ export class SidebarComponent {
     this.isOpen.set(false);
   }
 
-  navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'UX Crimes', path: '/ux-crimes' },
-    { label: 'Angular Crimes', path: '/angular-crimes' },
-    { label: 'JavaScript Visual Lab', path: '/javascript-crimes' },
-    { label: 'CSS Crimes', path: '/css-crimes' },
-  ];
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
 }

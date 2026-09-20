@@ -1,0 +1,67 @@
+/* =========================================================
+   MUSEUM SIGN
+   ========================================================= */
+
+.museum-sign {
+  transform: rotate(1deg);
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.museum-sign:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+
+/* =========================================================
+   SECURITY CLEARANCE ANIMATION
+   ========================================================= */
+
+.security-clearance {
+  animation: clearance-enter 0.4s ease-out;
+}
+
+@keyframes clearance-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   RANDOM SCANNER RESULT
+   ========================================================= */
+
+.scanner-result {
+  animation: scanner-result-enter 0.35s ease-out;
+}
+
+@keyframes scanner-result-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .museum-sign {
+    transform: none;
+  }
+}

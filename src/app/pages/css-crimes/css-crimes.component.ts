@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-css-crimes',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './css-crimes.component.html',
   styleUrl: './css-crimes.component.scss',
 })

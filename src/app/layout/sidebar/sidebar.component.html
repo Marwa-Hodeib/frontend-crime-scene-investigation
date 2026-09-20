@@ -1,24 +1,28 @@
-<!-- Hamburger button, mobile only -->
+<!-- Mobile hamburger -->
 <button
   (click)="toggle()"
-  class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-900 text-white rounded"
+  class="fixed left-4 top-4 z-50 rounded-lg border border-slate-700 bg-slate-900 p-2 text-white shadow-lg transition hover:bg-slate-800 lg:hidden dark:border-slate-700 dark:bg-slate-900"
   aria-label="Toggle menu"
 >
   ☰
 </button>
 
-<!-- Overlay when sidebar is open on mobile -->
 @if (isOpen()) {
-  <div class="fixed inset-0 bg-black/50 z-30 lg:hidden" (click)="close()"></div>
+  <div
+    class="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm"
+    (click)="close()"
+  ></div>
 }
 
 <nav
   [class.-translate-x-full]="!isOpen()"
   [class.translate-x-0]="isOpen()"
-  class="fixed top-0 left-0 z-40 flex w-64 flex-col gap-4 border-r border-slate-800 bg-slate-900 p-6 text-slate-100 transform transition-transform duration-200 lg:sticky lg:top-0 lg:h-screen lg:self-start lg:translate-x-0"
+  class="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col gap-4 border-r border-slate-200 bg-white p-6 text-slate-900 shadow-xl transition-transform duration-200 lg:sticky lg:top-0 lg:self-start lg:translate-x-0 dark:border-slate-800 dark:bg-[#0B0D12] dark:text-slate-100"
 >
-  <!-- Logo -->
-  <div class="mb-4 flex justify-center border-b border-slate-800 pb-6">
+  <!-- LOGO -->
+  <div
+    class="mb-4 flex justify-center border-b border-slate-200 pb-6 dark:border-slate-800"
+  >
     <img
       src="/assets/frontend-crimes-logo.png"
       alt="Frontend Crimes"
@@ -26,15 +30,48 @@
     />
   </div>
 
-  <!-- Navigation -->
-  @for (item of navItems; track item.path) {
-    <a
-      [routerLink]="item.path"
-      routerLinkActive="text-yellow-400 font-medium"
-      (click)="close()"
-      class="transition-colors duration-200 hover:text-yellow-400"
+  <!-- NAVIGATION -->
+  <div class="flex flex-1 flex-col gap-4">
+    @for (item of navItems; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="font-medium text-yellow-500 dark:text-yellow-400"
+        (click)="close()"
+        class="transition-colors duration-200 hover:text-yellow-500 dark:hover:text-yellow-400"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </div>
+
+  <!-- THEME TOGGLE -->
+  <button
+    type="button"
+    (click)="toggleTheme()"
+    class="group flex items-center justify-between rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-left text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800"
+  >
+    <span class="flex items-center gap-3">
+      <span
+        class="text-lg transition-transform duration-300 group-hover:rotate-12"
+      >
+        @if (theme() === "dark") {
+          ☀️
+        } @else {
+          🌙
+        }
+      </span>
+
+      @if (theme() === "dark") {
+        Light mode
+      } @else {
+        Dark mode
+      }
+    </span>
+
+    <span
+      class="text-xs text-slate-400 transition-transform duration-300 group-hover:translate-x-1"
     >
-      {{ item.label }}
-    </a>
-  }
+      →
+    </span>
+  </button>
 </nav>
