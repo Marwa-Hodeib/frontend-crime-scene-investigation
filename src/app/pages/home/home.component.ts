@@ -15,57 +15,37 @@ interface RevealPixel {
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  // ==========================================
-  // GAME STATE
-  // ==========================================
-
   isRevealed = signal(false);
 
   escapeCount = signal(0);
 
-  readonly maxEscapes = 4;
+  // 🐞 Three catches instead of four
+  readonly maxEscapes = 3;
+
   showSpeech = signal(false);
   speechMessage = signal('');
 
   private speechTimer?: ReturnType<typeof setTimeout>;
+  private captureTimer?: ReturnType<typeof setTimeout>;
+  private pixelTimer?: ReturnType<typeof setTimeout>;
 
   private readonly speechMessages = [
     'HEY! You almost had me.',
     'STOP CHASING ME.',
-    'This is highly irregular.',
     '...fine. You caught me.',
   ];
-
-  // ==========================================
-  // BUG
-  // ==========================================
 
   bugX = signal(500);
   bugY = signal(300);
   bugAngle = signal(0);
 
-  // ==========================================
-  // REVEAL PIXELS
-  // ==========================================
-
   revealedPixels = signal<RevealPixel[]>([]);
-
-  // ==========================================
-  // ANIMATION TIMERS
-  // ==========================================
 
   private animationFrame?: number;
   private directionTimer?: ReturnType<typeof setTimeout>;
-  private pixelTimer?: ReturnType<typeof setTimeout>;
-  private captureTimer?: ReturnType<typeof setTimeout>;
-
-  // ==========================================
-  // INTERNAL MOVEMENT STATE
-  // ==========================================
 
   private x = 500;
   private y = 300;
-
   private angle = 0;
   private targetAngle = 0;
 
@@ -74,14 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private lastTime = 0;
 
-  // ==========================================
-  // LIFECYCLE
-  // ==========================================
-
   ngOnInit() {
-    if (typeof window === 'undefined') {
-      return;
-    }
+    if (typeof window === 'undefined') return;
 
     this.x = window.innerWidth * 0.5;
     this.y = window.innerHeight * 0.35;
@@ -90,7 +64,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.bugY.set(this.y);
 
     this.createRevealPixel();
-
     this.chooseNewDirection();
     this.startCrawling();
     this.schedulePixel();
@@ -99,25 +72,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.stopCrawling();
 
-    if (this.directionTimer) {
-      clearTimeout(this.directionTimer);
-    }
-
-    if (this.pixelTimer) {
-      clearTimeout(this.pixelTimer);
-    }
-
-    if (this.captureTimer) {
-      clearTimeout(this.captureTimer);
-    }
-    if (this.speechTimer) {
-      clearTimeout(this.speechTimer);
-    }
+    if (this.directionTimer) clearTimeout(this.directionTimer);
+    if (this.pixelTimer) clearTimeout(this.pixelTimer);
+    if (this.captureTimer) clearTimeout(this.captureTimer);
+    if (this.speechTimer) clearTimeout(this.speechTimer);
   }
-
-  // ==========================================
-  // BUG CLICK
-  // ==========================================
 
   catchBug() {
     const clickNumber = this.escapeCount() + 1;
@@ -128,29 +87,42 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.showSpeech.set(true);
 
-    // Clear any previous speech timer
     if (this.speechTimer) {
       clearTimeout(this.speechTimer);
     }
 
-    // Final click — caught!
+    // 🐞 Third catch = captured
     if (clickNumber >= this.maxEscapes) {
       this.escapeBug(true);
       return;
     }
 
-    // Bug escapes
     this.escapeBug(false);
 
-    // Hide speech bubble after a moment
     this.speechTimer = setTimeout(() => {
       this.showSpeech.set(false);
     }, 1200);
   }
 
-  // ==========================================
-  // STATUS
-  // ==========================================
+  /**
+   * 🏛️ Skip the investigation and enter the museum.
+   */
+  openMuseum() {
+    if (this.isRevealed()) return;
+
+    if (this.speechTimer) {
+      clearTimeout(this.speechTimer);
+    }
+
+    if (this.captureTimer) {
+      clearTimeout(this.captureTimer);
+    }
+
+    this.showSpeech.set(false);
+    this.stopCrawling();
+
+    this.isRevealed.set(true);
+  }
 
   get suspectStatus(): string {
     switch (this.escapeCount()) {
@@ -161,9 +133,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         return 'RESISTING ARREST';
 
       case 2:
-        return 'EVADING CAPTURE';
-
-      case 3:
         return 'CORNERED';
 
       default:
@@ -174,10 +143,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   get escapesRemaining(): number {
     return Math.max(this.maxEscapes - this.escapeCount(), 0);
   }
-
-  // ==========================================
-  // CRAWLING
-  // ==========================================
 
   private startCrawling() {
     this.lastTime = performance.now();
@@ -195,9 +160,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private animateBug(time: number) {
-    if (this.isRevealed()) {
-      return;
-    }
+    if (this.isRevealed()) return;
 
     const delta = Math.min((time - this.lastTime) / 16.67, 2);
 
@@ -206,9 +169,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.updateDirection();
     this.updateSpeed();
 
-    // Move continuously
     this.x += Math.cos(this.angle) * this.speed * delta;
-
     this.y += Math.sin(this.angle) * this.speed * delta;
 
     this.handleEdges();
@@ -216,8 +177,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.bugX.set(this.x);
     this.bugY.set(this.y);
 
-    // Convert radians to degrees
-    // The ladybug emoji naturally faces upward.
     const degrees = (this.angle * 180) / Math.PI + 90;
 
     this.bugAngle.set(degrees);
@@ -227,16 +186,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
 
-  // ==========================================
-  // NATURAL DIRECTION CHANGES
-  // ==========================================
-
   private chooseNewDirection() {
     const gentleTurn = (Math.random() - 0.5) * (Math.PI / 2);
 
     this.targetAngle = this.angle + gentleTurn;
 
-    // Slightly change speed
     this.targetSpeed = 0.55 + Math.random() * 0.5;
 
     const delay = 1200 + Math.random() * 2200;
@@ -251,7 +205,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private updateDirection() {
     let difference = this.targetAngle - this.angle;
 
-    // Normalize angle to -PI → PI
     while (difference > Math.PI) {
       difference -= Math.PI * 2;
     }
@@ -260,7 +213,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       difference += Math.PI * 2;
     }
 
-    // Slowly turn toward target direction
     this.angle += difference * 0.025;
   }
 
@@ -270,10 +222,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.speed += difference * 0.02;
   }
 
-  // ==========================================
-  // BUG ESCAPE
-  // ==========================================
-
   private escapeBug(isFinalEscape: boolean) {
     const turnDirection = Math.random() > 0.5 ? 1 : -1;
 
@@ -282,7 +230,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.targetAngle = this.angle + escapeTurn;
 
-    // Make the bug briefly panic
     this.targetSpeed = isFinalEscape ? 0 : 1.5;
 
     if (isFinalEscape) {
@@ -300,17 +247,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ==========================================
-  // SCREEN EDGES
-  // ==========================================
-
   private handleEdges() {
     const margin = 45;
 
     const width = window.innerWidth;
     const height = window.innerHeight;
-
-    // Turn toward the inside instead of bouncing.
 
     if (this.x < margin) {
       this.targetAngle = 0;
@@ -328,20 +269,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.targetAngle = -Math.PI / 2;
     }
 
-    // Safety clamp
     this.x = Math.max(margin, Math.min(width - margin, this.x));
 
     this.y = Math.max(margin, Math.min(height - margin, this.y));
   }
 
-  // ==========================================
-  // PIXEL TRAIL
-  // ==========================================
-
   private schedulePixel() {
-    if (this.isRevealed()) {
-      return;
-    }
+    if (this.isRevealed()) return;
 
     this.pixelTimer = setTimeout(() => {
       if (!this.isRevealed()) {
@@ -364,7 +298,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       {
         x: percentX,
         y: percentY,
-        size: 1.2 + Math.random() * 0.8,
+        size: 0.9 + Math.random() * 0.6,
       },
     ]);
   }

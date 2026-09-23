@@ -87,22 +87,12 @@
       <p class="mt-1 text-xs text-slate-500">Proceed at your own risk.</p>
     </div>
 
-    <!-- Museum button -->
-    <div class="absolute bottom-[7%] left-1/2 -translate-x-1/2">
-      <a
-        routerLink="/ux-crimes"
-        class="inline-block cursor-pointer rounded-xl bg-yellow-400 px-6 py-3 font-black text-slate-950 transition hover:-translate-y-1 hover:bg-yellow-300"
-      >
-        Enter the Museum
-      </a>
-    </div>
-
     <!-- Decorative evidence marks -->
     <div class="absolute left-[3%] top-[45%] text-2xl text-purple-500/30">
       ✦
     </div>
 
-    <div class="absolute right-[4%] bottom-[40%] text-xl text-yellow-400/30">
+    <div class="absolute bottom-[40%] right-[4%] text-xl text-yellow-400/30">
       ×
     </div>
 
@@ -170,6 +160,32 @@
       </svg>
 
       <!-- ======================================== -->
+      <!-- OPEN MUSEUM                             -->
+      <!-- ======================================== -->
+
+      <div class="fixed bottom-[7%] left-1/2 z-[120] -translate-x-1/2">
+        <button
+          type="button"
+          (click)="openMuseum()"
+          class="group relative flex cursor-pointer items-center gap-2 rounded-xl border border-slate-600 bg-slate-900/90 px-5 py-3 text-xs font-black tracking-[0.12em] text-slate-200 shadow-xl backdrop-blur-md transition-all duration-200 hover:-translate-y-1 hover:border-yellow-400 hover:bg-slate-800 hover:text-yellow-400"
+        >
+          <span> OPEN MUSEUM </span>
+
+          <span
+            class="text-base transition-transform duration-200 group-hover:translate-x-1"
+          >
+            →
+          </span>
+
+          <span
+            class="pointer-events-none absolute left-1/2 top-full mt-2 w-max -translate-x-1/2 translate-y-[-4px] text-[10px] font-bold tracking-[0.08em] text-slate-500 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100"
+          >
+            Skip the investigation
+          </span>
+        </button>
+      </div>
+
+      <!-- ======================================== -->
       <!-- LADYBUG                                 -->
       <!-- ======================================== -->
 
@@ -184,6 +200,10 @@
       >
         🐞
       </button>
+
+      <!-- ======================================== -->
+      <!-- LADYBUG SPEECH                          -->
+      <!-- ======================================== -->
 
       @if (showSpeech()) {
         <div

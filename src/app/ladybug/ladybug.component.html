@@ -1,0 +1,82 @@
+@if (isVisible()) {
+  <button
+    type="button"
+    class="ladybug"
+    [style.left.px]="bugX()"
+    [style.top.px]="bugY()"
+    [style.--bug-angle]="bugAngle() + 'deg'"
+    aria-label="Investigate ladybug"
+    (click)="catchBug()"
+  >
+    🐞
+  </button>
+}
+
+@if (showSplat()) {
+  <div
+    class="splat"
+    [class.splat-purple]="splatColor() === 'purple'"
+    [class.splat-yellow]="splatColor() === 'yellow'"
+    [class.splat-blue]="splatColor() === 'blue'"
+    [class.splat-pink]="splatColor() === 'pink'"
+    [class.splat-green]="splatColor() === 'green'"
+    [class.splat-orange]="splatColor() === 'orange'"
+    [style.left.px]="splatX()"
+    [style.top.px]="splatY()"
+    aria-hidden="true"
+  >
+    <span class="splat-drop drop-1"></span>
+    <span class="splat-drop drop-2"></span>
+    <span class="splat-drop drop-3"></span>
+    <span class="splat-drop drop-4"></span>
+    <span class="splat-drop drop-5"></span>
+    <span class="splat-drop drop-6"></span>
+  </div>
+}
+
+@if (showReport()) {
+  <div class="bug-report-backdrop" (click)="closeReport()">
+    <div
+      class="bug-report"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bug-report-title"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="bug-report-header">
+        <span class="bug-icon">🧪</span>
+
+        <div>
+          <p class="case-number">BUG REPORT #001</p>
+
+          <h2 id="bug-report-title">Suspicious Activity Detected</h2>
+        </div>
+      </div>
+
+      <div class="bug-report-body">
+        <div class="evidence-row">
+          <span>Species</span>
+          <strong>Ladybug</strong>
+        </div>
+
+        <div class="evidence-row">
+          <span>Status</span>
+          <strong>Extremely guilty</strong>
+        </div>
+
+        <div class="evidence-row">
+          <span>Crimes</span>
+          <strong>Being suspicious</strong>
+        </div>
+      </div>
+
+      <div class="bug-report-footer">
+        <p>Subject has been observed crawling without authorization.</p>
+
+        <button type="button" class="close-report" (click)="closeReport()">
+          Close investigation
+        </button>
+      </div>
+    </div>
+  </div>
+}
