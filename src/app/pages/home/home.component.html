@@ -1,524 +1,199 @@
-<div
-  class="min-h-screen overflow-hidden bg-slate-50 text-slate-950 transition-colors duration-300 dark:bg-[#0B0D12] dark:text-slate-100"
->
-  <!-- ========================================================= -->
-  <!-- HERO / MUSEUM ENTRANCE -->
-  <!-- ========================================================= -->
+<div class="home-page relative min-h-screen overflow-hidden bg-[#0B0D12]">
+  <!-- ============================================ -->
+  <!-- HOMEPAGE / REVEAL COMPOSITION               -->
+  <!-- ============================================ -->
 
-  <section class="relative flex min-h-screen items-center overflow-hidden">
-    <!-- Decorative background blobs -->
+  <div
+    class="homepage-content absolute inset-0 overflow-hidden px-6 text-white"
+  >
+    <!-- Top left -->
+    <div class="absolute left-[8%] top-[12%] max-w-xs">
+      <p
+        class="mb-2 text-xs font-black uppercase tracking-[0.35em] text-purple-400"
+      >
+        Frontend Crimes
+      </p>
+
+      <p class="text-sm text-slate-500">
+        A portfolio disguised as a crime scene.
+      </p>
+    </div>
+
+    <!-- Main identity -->
     <div
-      class="pointer-events-none absolute -left-32 -top-32 h-80 w-80 rounded-full bg-red-200/50 blur-3xl dark:bg-red-950/30"
-    ></div>
+      class="absolute left-1/2 top-1/2 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 text-center"
+    >
+      <p
+        class="mb-4 text-xs font-black uppercase tracking-[0.35em] text-slate-500"
+      >
+        Suspect Profile
+      </p>
 
-    <div
-      class="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full bg-purple-200/50 blur-3xl dark:bg-purple-950/30"
-    ></div>
+      <h1 class="text-5xl font-black tracking-tight sm:text-7xl lg:text-8xl">
+        Marwa Hodeib
+      </h1>
 
-    <div
-      class="pointer-events-none absolute bottom-[-120px] left-1/3 h-80 w-80 rounded-full bg-yellow-200/40 blur-3xl dark:bg-yellow-950/20"
-    ></div>
+      <p
+        class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl"
+      >
+        Senior Frontend Developer building interfaces that are meant to be
+        experienced.
+      </p>
+    </div>
 
-    <div class="relative mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 lg:px-10">
-      <!-- Museum label -->
-      <div class="mb-8 flex items-center justify-center gap-3 sm:justify-start">
-        <span
-          class="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-black uppercase tracking-widest text-red-600 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-400"
-        >
-          <span class="animate-pulse">🚨</span>
-          Frontend Crime Museum
-        </span>
+    <!-- Tech evidence -->
+    <div class="absolute right-[8%] top-[20%] text-right">
+      <p
+        class="mb-3 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500"
+      >
+        Known Technologies
+      </p>
 
-        <span
-          class="hidden text-xs font-bold uppercase tracking-widest text-slate-400 sm:block"
-        >
-          Est. 2026
-        </span>
+      <div class="flex flex-wrap justify-end gap-2">
+        <span class="tech-tag">Angular</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">Next.js</span>
       </div>
+    </div>
 
-      <!-- ===================================================== -->
-      <!-- HERO CONTENT -->
-      <!-- ===================================================== -->
+    <!-- Career evidence -->
+    <div class="absolute bottom-[20%] left-[8%]">
+      <p
+        class="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500"
+      >
+        Case History
+      </p>
 
-      <div class="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-        <!-- LEFT -->
-        <div class="text-center lg:text-left">
-          <p
-            class="mb-4 text-sm font-black uppercase tracking-[0.25em] text-slate-400"
+      <p class="text-sm font-bold text-slate-300">
+        Photographer → Software Engineer
+      </p>
+
+      <p class="mt-1 text-xs text-slate-500">
+        Creative background. Technical obsession.
+      </p>
+    </div>
+
+    <!-- Crime scene evidence -->
+    <div class="absolute bottom-[18%] right-[9%] text-right">
+      <p
+        class="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-500"
+      >
+        Investigation Status
+      </p>
+
+      <p class="text-sm font-black text-yellow-400">CASE OPEN</p>
+
+      <p class="mt-1 text-xs text-slate-500">Proceed at your own risk.</p>
+    </div>
+
+    <!-- Museum button -->
+    <div class="absolute bottom-[7%] left-1/2 -translate-x-1/2">
+      <a
+        routerLink="/ux-crimes"
+        class="inline-block cursor-pointer rounded-xl bg-yellow-400 px-6 py-3 font-black text-slate-950 transition hover:-translate-y-1 hover:bg-yellow-300"
+      >
+        Enter the Museum
+      </a>
+    </div>
+
+    <!-- Decorative evidence marks -->
+    <div class="absolute left-[3%] top-[45%] text-2xl text-purple-500/30">
+      ✦
+    </div>
+
+    <div class="absolute right-[4%] bottom-[40%] text-xl text-yellow-400/30">
+      ×
+    </div>
+
+    <div class="absolute left-[30%] top-[8%] text-xs text-slate-700">
+      EVIDENCE_001
+    </div>
+
+    <div class="absolute bottom-[8%] right-[4%] text-xs text-slate-700">
+      CASE // FRONTEND
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- MYSTERY SCREEN                              -->
+  <!-- ============================================ -->
+
+  @if (!isRevealed()) {
+    <div class="mystery-screen fixed inset-0 z-[100]">
+      <!-- ======================================== -->
+      <!-- PIXEL MASK                              -->
+      <!-- ======================================== -->
+
+      <svg
+        class="pixel-mask"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <mask
+            id="homepage-mask"
+            mask-type="luminance"
+            maskUnits="userSpaceOnUse"
+            maskContentUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="100"
+            height="100"
           >
-            Welcome to the investigation
-          </p>
+            <!-- Everything starts hidden -->
+            <rect x="0" y="0" width="100" height="100" fill="white" />
 
-          <h1
-            class="text-5xl font-black leading-[0.95] tracking-tight text-slate-950 dark:text-white sm:text-6xl lg:text-7xl"
-          >
-            Frontend
-            <span class="text-red-500">Crime</span>
-            <br />
+            <!-- Revealed pixels -->
+            @for (pixel of revealedPixels(); track $index) {
+              <rect
+                [attr.x]="pixel.x - pixel.size / 2"
+                [attr.y]="pixel.y - pixel.size / 2"
+                [attr.width]="pixel.size"
+                [attr.height]="pixel.size"
+                fill="black"
+              />
+            }
+          </mask>
+        </defs>
 
-            Scene
-            <span class="relative inline-block">
-              Investigation
+        <!-- Dark overlay -->
+        <rect
+          x="0"
+          y="0"
+          width="100"
+          height="100"
+          fill="#0B0D12"
+          mask="url(#homepage-mask)"
+        />
+      </svg>
 
-              <span
-                class="absolute -right-5 -top-5 rotate-12 text-2xl sm:text-3xl"
-              >
-                🔎
-              </span>
-            </span>
-          </h1>
+      <!-- ======================================== -->
+      <!-- LADYBUG                                 -->
+      <!-- ======================================== -->
 
-          <p
-            class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl lg:mx-0"
-          >
-            A suspicious collection of bad UX, questionable CSS, chaotic
-            JavaScript, and Angular crimes.
-          </p>
+      <button
+        type="button"
+        class="bug"
+        [style.left.px]="bugX()"
+        [style.top.px]="bugY()"
+        [style.--bug-angle]="bugAngle() + 'deg'"
+        (click)="catchBug()"
+        aria-label="Catch the ladybug"
+      >
+        🐞
+      </button>
 
-          <!-- Museum status -->
-          <div
-            class="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
-          >
-            <div
-              class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-[11px] font-extrabold text-slate-600 shadow-sm dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300"
-            >
-              <span
-                class="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
-              ></span>
-
-              04 exhibits open
-            </div>
-
-            <div
-              class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-[11px] font-extrabold text-slate-600 shadow-sm dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300"
-            >
-              <span class="text-sm">∞</span>
-              questionable decisions
-            </div>
-          </div>
-
-          <!-- Main CTA -->
-          @if (!securityCleared()) {
-            <button
-              type="button"
-              (click)="enterMuseum()"
-              class="group mt-10 inline-flex items-center gap-3 rounded-2xl bg-slate-950 px-7 py-4 text-base font-black text-white shadow-xl shadow-slate-950/20 transition duration-300 hover:-translate-y-1 hover:bg-red-500 hover:shadow-red-500/30 dark:bg-white dark:text-slate-950 dark:shadow-black/30 dark:hover:bg-red-500 dark:hover:text-white"
-            >
-              <span>Enter the Museum</span>
-
-              <span
-                class="transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </button>
-          } @else {
-            <a
-              routerLink="/ux-crimes"
-              class="group mt-10 inline-flex items-center gap-3 rounded-2xl bg-red-500 px-7 py-4 text-base font-black text-white shadow-xl shadow-red-500/20 transition duration-300 hover:-translate-y-1 hover:bg-red-600"
-            >
-              <span>Start Investigating</span>
-
-              <span
-                class="transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </a>
-          }
-        </div>
-
-        <!-- =================================================== -->
-        <!-- MUSEUM SIGN -->
-        <!-- =================================================== -->
-
-        <div class="museum-sign relative mx-auto w-full max-w-md lg:ml-auto">
-          <!-- Tape -->
-          <div
-            class="absolute left-1/2 top-[-12px] z-10 h-[26px] w-[90px] -translate-x-1/2 -rotate-3 bg-yellow-300/75 shadow-sm"
-          ></div>
-
-          <div
-            class="relative border-2 border-slate-800 bg-slate-950 p-7 text-white shadow-2xl sm:p-9"
-          >
-            <div class="mb-6 flex items-center justify-between">
-              <span
-                class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400"
-              >
-                Museum Entrance
-              </span>
-
-              <span class="text-xl">🚨</span>
-            </div>
-
-            <div class="text-center">
-              <div
-                class="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-3xl bg-white shadow-lg"
-              >
-                <img
-                  src="/assets/frontend-crimes-logo.png"
-                  alt="Frontend Crime Museum"
-                  class="w-16"
-                />
-              </div>
-
-              <p
-                class="text-xs font-bold uppercase tracking-[0.25em] text-red-400"
-              >
-                Warning
-              </p>
-
-              <h2 class="mt-2 text-3xl font-black">
-                Proceed at
-                <span class="text-red-400">your own risk.</span>
-              </h2>
-
-              <p class="mt-4 text-sm leading-relaxed text-slate-400">
-                Contains suspicious code, questionable decisions, and frontend
-                developers who probably knew better.
-              </p>
-
-              <div
-                class="mt-6 border-t border-slate-700 pt-5 text-xs font-bold uppercase tracking-widest text-slate-500"
-              >
-                Admission: FREE
-                <span class="mx-2">•</span>
-                Regret: POSSIBLE
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===================================================== -->
-      <!-- SECURITY CLEARANCE -->
-      <!-- ===================================================== -->
-
-      @if (securityCleared()) {
+      @if (showSpeech()) {
         <div
-          class="security-clearance mx-auto mt-16 max-w-2xl rounded-2xl border border-green-200 bg-green-50 px-5 py-4 shadow-lg shadow-green-500/5 dark:border-green-900/50 dark:bg-green-950/20"
+          class="bug-speech"
+          [style.left.px]="bugX()"
+          [style.top.px]="bugY()"
         >
-          <div class="flex items-start gap-4">
-            <div
-              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-green-100 text-xl dark:bg-green-900/40"
-            >
-              🔓
-            </div>
-
-            <div>
-              <p
-                class="text-xs font-black uppercase tracking-widest text-green-600 dark:text-green-400"
-              >
-                Security Clearance Granted
-              </p>
-
-              <h3
-                class="mt-1 text-lg font-black text-slate-900 dark:text-white"
-              >
-                You're officially allowed inside.
-              </h3>
-
-              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                Please do not touch the exhibits. Seriously. We just cleaned the
-                CSS.
-              </p>
-            </div>
-          </div>
+          {{ speechMessage() }}
         </div>
       }
     </div>
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- EXHIBITS -->
-  <!-- ========================================================= -->
-
-  @if (securityCleared()) {
-    <section
-      class="border-t border-slate-200 bg-white px-5 py-20 transition-colors duration-300 dark:border-slate-800 dark:bg-[#0F1218] sm:px-8 lg:px-10"
-    >
-      <div class="mx-auto max-w-6xl">
-        <!-- Heading -->
-        <div class="mb-10 text-center">
-          <p
-            class="text-xs font-black uppercase tracking-[0.25em] text-red-500"
-          >
-            The Museum
-          </p>
-
-          <h2
-            class="mt-2 text-3xl font-black text-slate-950 dark:text-white sm:text-4xl"
-          >
-            Exhibits Under Investigation
-          </h2>
-
-          <p class="mx-auto mt-3 max-w-xl text-slate-500 dark:text-slate-400">
-            Four rooms. Four kinds of frontend chaos. Pick a case and start
-            investigating.
-          </p>
-        </div>
-
-        <!-- Exhibit cards -->
-        <div class="grid gap-5 sm:grid-cols-2">
-          @for (exhibit of exhibits; track exhibit.id) {
-            <a
-              [routerLink]="exhibit.route"
-              class="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-3xl border-2 border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900"
-              [attr.data-color]="exhibit.color"
-            >
-              <!-- Decorative circle -->
-              <div
-                class="pointer-events-none absolute -bottom-20 -right-20 h-48 w-48 rounded-full opacity-0 blur-2xl transition duration-300 group-hover:opacity-20"
-                [class.bg-red-500]="exhibit.color === 'red'"
-                [class.bg-purple-500]="exhibit.color === 'purple'"
-                [class.bg-yellow-400]="exhibit.color === 'yellow'"
-                [class.bg-cyan-500]="exhibit.color === 'cyan'"
-              ></div>
-
-              <!-- Top -->
-              <div class="relative flex items-center justify-between">
-                <span
-                  class="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400"
-                >
-                  Case #{{ exhibit.id }}
-                </span>
-
-                <span
-                  class="text-2xl transition duration-300 group-hover:rotate-12 group-hover:scale-125"
-                >
-                  {{ exhibit.icon }}
-                </span>
-              </div>
-
-              <!-- Content -->
-              <div class="relative mt-8">
-                <p
-                  class="text-xs font-black uppercase tracking-widest"
-                  [class.text-red-500]="exhibit.color === 'red'"
-                  [class.text-purple-500]="exhibit.color === 'purple'"
-                  [class.text-yellow-600]="exhibit.color === 'yellow'"
-                  [class.text-cyan-500]="exhibit.color === 'cyan'"
-                >
-                  {{ exhibit.label }}
-                </p>
-
-                <h3
-                  class="mt-1 text-2xl font-black text-slate-950 dark:text-white"
-                >
-                  {{ exhibit.title }}
-                </h3>
-
-                <p
-                  class="mt-3 max-w-md text-sm leading-relaxed text-slate-500 dark:text-slate-400"
-                >
-                  {{ exhibit.description }}
-                </p>
-              </div>
-
-              <!-- Bottom -->
-              <div class="relative mt-8 flex items-center justify-between">
-                <span
-                  class="text-sm font-black text-slate-900 dark:text-slate-200"
-                >
-                  Investigate
-                </span>
-
-                <span
-                  class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition duration-300 group-hover:translate-x-1 group-hover:bg-slate-950 group-hover:text-white dark:bg-slate-800 dark:text-slate-300 dark:group-hover:bg-white dark:group-hover:text-slate-950"
-                >
-                  →
-                </span>
-              </div>
-            </a>
-          }
-        </div>
-
-        <!-- =================================================== -->
-        <!-- RANDOM CRIME SCANNER -->
-        <!-- =================================================== -->
-
-        <div
-          class="mx-auto mt-16 max-w-3xl rounded-3xl border-2 border-dashed border-slate-300 bg-slate-50 p-6 shadow-sm transition-colors duration-300 dark:border-slate-700 dark:bg-slate-900/60"
-        >
-          <div
-            class="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left"
-          >
-            <div
-              class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-3xl shadow-lg dark:bg-white"
-            >
-              🔎
-            </div>
-
-            <div class="flex-1">
-              <p
-                class="text-[10px] font-black uppercase tracking-[0.25em] text-red-500"
-              >
-                Museum Security Scanner
-              </p>
-
-              <h3
-                class="mt-1 text-xl font-black text-slate-950 dark:text-white"
-              >
-                Find me a random crime.
-              </h3>
-
-              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                We have absolutely no idea what it will find. That's the fun
-                part.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              (click)="scanMuseum()"
-              [disabled]="isScanning()"
-              class="shrink-0 rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:bg-red-500 disabled:cursor-wait disabled:opacity-60 dark:bg-white dark:text-slate-950 dark:hover:bg-red-500 dark:hover:text-white"
-            >
-              @if (isScanning()) {
-                <span class="inline-flex items-center gap-2">
-                  <span class="animate-spin">◌</span>
-                  Scanning...
-                </span>
-              } @else {
-                Scan for Crimes
-              }
-            </button>
-          </div>
-
-          <!-- Scanner result -->
-          @if (scanResult()) {
-            <div
-              class="scanner-result mt-6 rounded-2xl border border-red-200 bg-red-50 p-4 dark:border-red-900/50 dark:bg-red-950/20"
-            >
-              <div class="flex items-start gap-4">
-                <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-2xl shadow-sm dark:bg-slate-900"
-                >
-                  {{ scanResult()!.icon }}
-                </div>
-
-                <div class="flex-1">
-                  <p
-                    class="text-[10px] font-black uppercase tracking-widest text-red-500"
-                  >
-                    🚨 Crime Detected
-                  </p>
-
-                  <h4
-                    class="mt-1 text-xl font-black text-slate-950 dark:text-white"
-                  >
-                    {{ scanResult()!.title }}
-                  </h4>
-
-                  <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                    {{ scanResult()!.description }}
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  (click)="investigateCase()"
-                  class="hidden shrink-0 rounded-xl bg-white px-4 py-2 text-sm font-black text-slate-900 shadow-sm transition hover:bg-slate-950 hover:text-white dark:bg-slate-900 dark:text-white dark:hover:bg-white dark:hover:text-slate-950 sm:block"
-                >
-                  Investigate →
-                </button>
-              </div>
-
-              <button
-                type="button"
-                (click)="investigateCase()"
-                class="mt-4 w-full rounded-xl bg-white px-4 py-3 text-sm font-black text-slate-900 shadow-sm dark:bg-slate-900 dark:text-white sm:hidden"
-              >
-                Investigate Case →
-              </button>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
-  }
-
-  <!-- ========================================================= -->
-  <!-- MUSEUM RULES -->
-  <!-- ========================================================= -->
-
-  @if (securityCleared()) {
-    <section
-      class="border-t border-slate-800 bg-slate-950 px-5 py-16 text-white sm:px-8 lg:px-10"
-    >
-      <div class="mx-auto max-w-4xl">
-        <div class="grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
-          <!-- Heading -->
-          <div>
-            <p
-              class="text-xs font-black uppercase tracking-[0.25em] text-yellow-400"
-            >
-              Museum Rules
-            </p>
-
-            <h2 class="mt-2 text-3xl font-black">You have been warned.</h2>
-
-            <p class="mt-3 text-sm leading-relaxed text-slate-400">
-              Follow these rules if you want to leave with your sanity intact.
-            </p>
-          </div>
-
-          <!-- Rules -->
-          <div class="divide-y divide-slate-800 border-y border-slate-800">
-            <div class="flex gap-4 py-4">
-              <span class="font-black text-yellow-400"> 01 </span>
-
-              <p class="text-sm text-slate-300">
-                Don't trust anything labeled
-                <strong class="text-white">"Submit."</strong>
-              </p>
-            </div>
-
-            <div class="flex gap-4 py-4">
-              <span class="font-black text-yellow-400"> 02 </span>
-
-              <p class="text-sm text-slate-300">
-                Never use
-                <code class="text-red-400">!important</code>
-                without supervision.
-              </p>
-            </div>
-
-            <div class="flex gap-4 py-4">
-              <span class="font-black text-yellow-400"> 03 </span>
-
-              <p class="text-sm text-slate-300">
-                Angular knows what you're doing.
-              </p>
-            </div>
-
-            <div class="flex gap-4 py-4">
-              <span class="font-black text-yellow-400"> 04 </span>
-
-              <p class="text-sm text-slate-300">
-                If it works on your machine,
-                <strong class="text-white"> investigate further. </strong>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  }
-
-  <!-- ========================================================= -->
-  <!-- FOOTER -->
-  <!-- ========================================================= -->
-
-  @if (securityCleared()) {
-    <footer class="bg-slate-950 px-5 pb-10 text-center sm:px-8">
-      <div class="mx-auto max-w-4xl border-t border-slate-800 pt-8">
-        <p class="text-xs font-bold text-slate-500">
-          No frontend developers were harmed during the investigation.
-        </p>
-
-        <p class="mt-2 text-xs text-slate-700">Probably.</p>
-      </div>
-    </footer>
   }
 </div>
